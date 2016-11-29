@@ -4,7 +4,7 @@ body {
 }
 
 main {
-  width: 90%;
+  width: 909px;
   margin: 0 auto;
 }
 
@@ -75,9 +75,7 @@ footer {
     text-align: center;
 }
 
-ul {
-    padding-left: 0px;
-}
+ul {width: 800px;}
 
 li {
     float: left;
