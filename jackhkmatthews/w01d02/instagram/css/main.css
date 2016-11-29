@@ -1,10 +1,113 @@
 /*
 Colors to use:
-dark blue: #06365f
+dark blue: #06365f 85	124	155
 light blue: #1c5380
+
+light button
+
+108	147	178
+
+dark button
+
+67	115	153
+
+h2 6	50	90
 */
 
 body {
   font: 200 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.box.top {
+    height: 232px;
+    padding-top: 55px;
+    background: linear-gradient(rgb(85,124,155), #1c5380);
+}
+
+img.phones {
+    float: left;
+    padding-top: 52px;
+}
+
+div.rightContainer {
+  float: right;
+  padding-top: 61px;
+}
+
+.logoContainer {}
+
+.copyContainer {
+    width: 414px;
+    background-image: url("../images/frame.png");
+    padding: 20px 44px 0px 44px;
+    background-repeat: no-repeat;
+}
+
+.appStoreContainer {padding: 20px 42px;}
+
+footer {
+    margin: 459px 10% 0 10%;
+    text-align: center;
+}
+p: 316px;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+li {
+    float: left;
+    padding: 14px;
+    list-style: none;
+    text-transform: uppercase;
+    color: #1c5380;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+span {
+    float: right;
+    padding: 20px;
+}
+
+img.brand {
+    display: inline-block;
+}
+
+button {
+    float: right;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    vertical-align: middle;
+    background: linear-gradient(rgb(108,147,178), rgb(67,115,153));
+    color: white;
+    border: 1px solid #1c5380;
+    text-align: right;
+    margin: 15px 5px 0 0;
+}
+
+img.home {
+    display: inline;
+    vertical-align: bottom;
+    margin: 0 8px 0 0;
+}
+
+li.copy {
+    color: grey;
+}
+
+h2 {
+    color: rgb(6,50,90);
+    font-size: 30px;
+}
+
+p {
+    font-size: 16px;
 }
