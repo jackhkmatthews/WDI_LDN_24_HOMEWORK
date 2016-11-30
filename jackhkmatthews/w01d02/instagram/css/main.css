@@ -71,20 +71,23 @@ p {
 }
 
 footer {
-    margin: 459px 10% 0 10%;
+    margin: 459px 0 0 0;
     text-align: center;
 }
 
-ul {width: 800px;}
+ul {
+    margin: 0 auto;
+}
 
 li {
-    float: left;
+    /* float: left; */
     padding: 14px;
     list-style: none;
     text-transform: uppercase;
     color: #1c5380;
     font-weight: bold;
     font-size: 13px;
+    display: inline-block;
 }
 
 span {
