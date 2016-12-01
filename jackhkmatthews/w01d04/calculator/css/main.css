@@ -1,0 +1,67 @@
+.calculatorContainer {
+    width: 400px;
+    margin: 0 auto;
+    color: white;
+    background-color: grey;
+    border-radius: 11px;
+    padding: 10px 0 10px 0;
+    font-family: monospace;
+}
+
+h1.title {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+h2.output {
+    padding: 10px;
+    margin: 0;
+    text-align: right;
+}
+
+form#calculatorForm {
+    padding: 10px 20px 10px 20px;
+}
+
+.outputContainer {margin: 0 10px 0;background: black;border-radius: 12px;}
+
+body {
+    padding: 30px 0 0 0;
+    background: black;
+}
+
+.titleContainer {
+    margin: 0 10px 0;
+    background: black;
+    border-radius: 12px;
+}
+
+input.firstNumber {
+    font-size: 22px;
+    width: 57px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+}
+
+select.operator {
+    height: 30px;
+    width: 101px;
+    padding: 0;
+    border: 0;
+    margin: 0 20px;
+}
+
+input.secondNumber {font-size: 22px;width: 57px;height: 30px;padding: 0;border: 0;}
+
+input#submit {
+    width: 52px;
+    margin: 0 0 0 18px;
+}
+
+input {
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+}

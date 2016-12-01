@@ -53,5 +53,4 @@ h2 {
   transition: box-shadow 0.5s;
 }
 
-.container:hover {
-}
+.container:hover {}
