@@ -17,11 +17,14 @@ setTimeout(function () {
       //define users chosen operator in order to allow toUpperCase() of 'sqrt' and to reset at the start of a new loop
       var operator = 'operator';
 
+      //define array of available operators to allow operators to be searched for the chosen operator
+      var operators = ['*', '/', '+', '-', '^', 'SQRT'];
+
       //get kind of operation the user would like to use
       //prompt repeatedly until one of available operators selected
-      while (operator !== '*' && operator !== '/' && operator !== '+' && operator !== '-' && operator !== '^' && operator.toUpperCase() !== 'SQRT'){
+      do {
         operator = prompt('Please type *, /, +, -, ^ or SQRT to select one as your calculation operator');
-      }
+      } while (operators.indexOf(operator.toUpperCase()) === -1);
 
       //get user's first number
       var firstNumber = parseFloat(prompt('Please enter your first number'));
@@ -88,6 +91,10 @@ setTimeout(function () {
 
       //caculate cost of trip
       var cost = ((distance / fuelEfficiency) * costPerGallon);
+
+      //round answers to the nearest 100th
+      cost = (Math.round(cost * 100))/100;
+      time = (Math.round(time * 100))/100;
 
       //display answer string to user
       alert('Your trip will cost £' + cost + ' and take ' + time + ' hours.');
