@@ -104,3 +104,22 @@ setTimeout(function () {
     }
   }
 }, 1000);
+
+
+
+
+
+speak('hello');
+
+function speak(words) {
+  console.log(words);
+}
+
+speak('hello');
+speakMore('more');
+
+var speakMore = function(moreWords) {
+  console.log(moreWords);
+};
+
+speakMore('more');
