@@ -3,28 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:500" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="calculatorContainer">
       <div class="titleContainer">
-        <h1 class="title">Calculator</h1>
+        <h1 class="title">WDI CALQ</h1>
+      </div>
+      <div class="outputContainer">
+        <h2 id='output' class="output">_</h2>
       </div>
       <form id="calculatorForm" class="calculatorForm" action="index.html" method="post">
-        <input type="text" name="firstNumber" value="" class="firstNumber" id="firstNumber">
+        <input type="text" name="firstNumber" value="" class="firstNumber" id="firstNumber" placeholder="">
         <select class="operator" name="operator" id='operator'>
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="/">/</option>
           <option value="*">*</option>
         </select>
-        <input type="text" name="secondNumber" value="" class="secondNumber" id="secondNumber">
+        <input type="text" name="secondNumber" value="" class="secondNumber" id="secondNumber" placeholder="">
         <input type="submit" value="=" id="submit"/>
       </form>
-      <div class="outputContainer">
-        <h2 id='output' class="output">OUTPUT</h2>
-      </div>
     </div>
   </body>
 </html>
