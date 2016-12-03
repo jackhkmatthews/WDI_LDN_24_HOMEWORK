@@ -1,0 +1,40 @@
+body {
+  background: red;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.board-container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+ul.board {
+    padding: 0;
+    list-style: none;
+}
+
+li.box {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    float: left;
+}
+
+li.box:hover {
+    background: orange;
+}
+
+li.box.x {
+    color: white;
+    background-color: black;
+}
+
+li.box.naught {
+    color: black;
+    background-color: white;
+}
