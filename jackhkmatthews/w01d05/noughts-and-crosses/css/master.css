@@ -38,3 +38,29 @@ li.box.naught {
     color: black;
     background-color: white;
 }
+
+@keyframes xflashing {
+    from {background-color: black;}
+    to {background-color: blue;}
+}
+
+/* The element to apply the animation to */
+li.x.box.flashing {
+  animation-name: xflashing;
+  animation-duration: 1s;
+  background-color: blue;
+  animation-iteration-count: infinite;
+}
+
+@keyframes naughtFlashing {
+    from {background-color: white;}
+    to {background-color: yellow;}
+}
+
+/* The element to apply the animation to */
+li.naught.box.flashing {
+  animation-name: naughtFlashing;
+  animation-duration: 1s;
+  background-color: blue;
+  animation-iteration-count: infinite;
+}

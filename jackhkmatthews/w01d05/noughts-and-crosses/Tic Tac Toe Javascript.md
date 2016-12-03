@@ -44,8 +44,7 @@ For this exercise, you'll be building a tic tac toe game in HTML, CSS, and pure 
 
 **Bonus:**
 - Display a message to indicate which turn is about to be played
-- After the necessary moves have been played, stop the game and alert the
-  winner if one player ends up winning with three in a row
+- After the necessary moves have been played, stop the game and alert the winner if one player ends up winning with three in a row
     * Hint: Determine a set of winning combinations. Check those
       combinations on the board contents after every move.
 
