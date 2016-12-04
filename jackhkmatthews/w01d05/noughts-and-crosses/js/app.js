@@ -17,6 +17,9 @@ function app() {
   //create players to allow storage of 'moves' i.e which lis are in thier name
   //wining combinations of boxes - player 'controls' these boxes to win
 
+  var expandButton           = document.getElementById('title-container');
+  var isExpanded             = false;
+  var appContainer           = document.getElementById('app-container');
   var boxes                  = document.getElementsByClassName('box');
   var xScoreElement          = document.getElementById('xScore');
   var naughtScoreElement     = document.getElementById('naughtScore');
@@ -38,6 +41,16 @@ function app() {
                             ['box0', 'box4', 'box8'], //diagonals
                             ['box2', 'box4', 'box6']
   ];
+
+  //make expandButton listen for click and expand on click
+  expandButton.addEventListener('click', function(){
+    if (!isExpanded){
+      appContainer.style.height = '530px';
+    } else {
+      appContainer.style.height = '49px';
+    }
+    isExpanded = !isExpanded;
+  });
 
   //make each box listen for clicks with onBoxClick callback
   makeBoxesListen(onBoxClick);
