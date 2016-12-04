@@ -1,10 +1,10 @@
 body {
-  background: red;
 }
 
 main {
     padding: 20px;
     text-align: center;
+    background-color: #294f8a;
 }
 
 .board-container {
@@ -39,28 +39,13 @@ li.box.naught {
     background-color: white;
 }
 
-@keyframes xflashing {
-    from {background-color: black;}
-    to {background-color: blue;}
-}
-
-/* The element to apply the animation to */
-li.x.box.flashing {
-  animation-name: xflashing;
-  animation-duration: 1s;
-  background-color: blue;
-  animation-iteration-count: infinite;
-}
-
-@keyframes naughtFlashing {
-    from {background-color: white;}
+@keyframes flashing {
     to {background-color: yellow;}
 }
 
 /* The element to apply the animation to */
-li.naught.box.flashing {
-  animation-name: naughtFlashing;
+li.box.flashing {
+  animation-name: flashing;
   animation-duration: 1s;
-  background-color: blue;
   animation-iteration-count: infinite;
 }
