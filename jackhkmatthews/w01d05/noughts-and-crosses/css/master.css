@@ -10,7 +10,7 @@ main {
     position: relative;
     font-family: arial;
     border-radius: 4px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
     color: rgba(0,0,0,.54);
 }
 
@@ -37,18 +37,14 @@ li.box {
     margin: 5px;
     font-size: 34px;
     color: rgba(255, 255, 255, 0.8);
+    transition: box-shadow 0.7s, background-color 0.7s;
 }
 
 li.box.hover:hover {
-    background: rgba(248, 248, 248, 0.18);
-    box-shadow: 0 1px 1px rgba(0,0,0,0.76);
+    background: rgb(122, 206, 230);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.46);
 }
 
-li.box.x {
-}
-
-li.box.naught {
-}
 
 @keyframes flashing {
     0% {background-color:rgba(19, 149, 186, 0.0);}
@@ -66,7 +62,9 @@ li.box.flashing {
 
 @keyframes not-flashing {
     0% {background-color:rgba(19, 149, 186, 0.0);}
-    50%  {
+    30%  {
+    border: 2px solid rgba(248, 248, 248, 0); color: rgba(248, 248, 248, 0.0);}
+    70%  {
     border: 2px solid rgba(248, 248, 248, 0); color: rgba(248, 248, 248, 0.0);}
     100% {background-color:rgba(19, 149, 186, 0.0);}
     }
@@ -164,8 +162,9 @@ h2#turnIndicator {
 }
 
 div.next-turn {
-    border-bottom: 3px solid #62b7d0;
+    border-bottom: 7px solid rgb(98, 183, 208);
     box-shadow: 0 6px 6px rgba(0,0,0,.16);
+    /* box-sizing: border-box; */
 }
 
 span.x-marker {
