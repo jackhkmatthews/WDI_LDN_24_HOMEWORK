@@ -18,7 +18,12 @@ function app() {
   //wining combinations of boxes - player 'controls' these boxes to win
 
   var boxes                  = document.getElementsByClassName('box');
-  var turnIndicator          = document.getElementById('turnIndicator');
+  var xScoreElement          = document.getElementById('xScore');
+  var naughtScoreElement     = document.getElementById('naughtScore');
+  var xScore                 = 0;
+  var naughtScore            = 0;
+  var xContainer             = document.getElementById('xContainer');
+  var naughtContainer             = document.getElementById('naughtContainer');
   var resetButton            = document.getElementById('reset');
   var xIsNext                = true;
   var playerXBoxes           =[];
@@ -60,22 +65,22 @@ function app() {
         playerXBoxes.push(this.id);
         //check if x has won
         checkForWinner(playerXBoxes);
+        //set turn indicator innerhtml to "0 is next"
+        updateTurnIndicator();
         //reverse xIsNext
         xIsNext = !xIsNext;
-        //set turn indicator innerhtml to "0 is next"
-        updateTurnIndicator(0);
       //else if 0 is next
       } else if (!xIsNext) {
         //set box inner html to 0, add class background black and color white
-        updateBox(this, 0);
+        updateBox(this, 'O');
         //and store playerNaught's move in playerNaughtBoxes
         playerNaughtBoxes.push(this.id);
         //test if 0 has won
         checkForWinner(playerNaughtBoxes);
+        //set turn indicator innerhtml to "X is next"
+        updateTurnIndicator();
         //reverse xIsNextVariable
         xIsNext = !xIsNext;
-        //set turn indicator innerhtml to "X is next"
-        updateTurnIndicator('x');
       }
       //add clicked class to li
       this.className += ' clicked';
@@ -87,7 +92,7 @@ function app() {
   //update html and class of boxes
   function updateBox(box, player){
     box.innerHTML = player;
-    if (player === 0){
+    if (player === 'O'){
       box.className += ' naught';
     } else {
       box.className += ' ' + player;
@@ -104,27 +109,51 @@ function app() {
       var box2 = winningBoxCombinations[i][2];
       //test if all above winning boxes are in playersControledBoxes
       if (playersControledBoxes.includes(box0) && playersControledBoxes.includes(box1) && playersControledBoxes.includes(box2)){
-        //add alert / flashing class to appropriate boxes
-        document.getElementById(box0).className += ' flashing';
-        document.getElementById(box1).className += ' flashing';
-        document.getElementById(box2).className += ' flashing';
-        //unbind box click event to prevent users playing (restrict user interaction)
-        for (var j = 0; i < boxes.length; j ++) {
-          boxes[j].removeEventListener('click', onBoxClick);
+        //add not-flashing class to appropriate boxes
+        for (var k = 0; k < boxes.length; k ++) {
+          boxes[k].className += ' not-flashing';
         }
+        //replace alert / flashing class to appropriate boxes
+        document.getElementById(box0).className = document.getElementById(box0).className.replace(' not-flashing', ' flashing');
+        document.getElementById(box1).className = document.getElementById(box1).className.replace(' not-flashing', ' flashing');
+        document.getElementById(box2).className = document.getElementById(box2).className.replace(' not-flashing', ' flashing');
+        //unbind box click event to prevent users playing (restrict user interaction)
+        for (var j = 0; j < boxes.length; j ++) {
+          boxes[j].removeEventListener('click', onBoxClick);
+          //remove hover className from boxes
+          boxes[j].className = boxes[j].className.replace('hover', '');
+        }
+        updateScoreIndicator();
       }
     }
   }
 
-  function updateTurnIndicator(player){
-    turnIndicator.innerHTML = player + ' is next';
+  function updateTurnIndicator(){
+    xContainer.className = xContainer.className.replace('next-turn', '');
+    naughtContainer.className = naughtContainer.className.replace('next-turn', '');
+    if (!xIsNext){
+      xContainer.className += ' next-turn';
+    } else if (xIsNext){
+      naughtContainer.className += ' next-turn';
+    }
+  }
+
+  function updateScoreIndicator(){
+    //update appropriate score indicator
+    if (!xIsNext){
+      naughtScore += 1;
+      naughtScoreElement.innerHTML = naughtScore;
+    } else if (xIsNext) {
+      xScore += 1;
+      xScoreElement.innerHTML = xScore;
+    }
   }
 
   //reset button should clear board and make lis listen again
   function onResetClick(){
     //reset all box classes and html
     for (var i = 0; i < boxes.length; i ++) {
-      boxes[i].className = 'box';
+      boxes[i].className = 'box hover';
       boxes[i].innerHTML = '';
     }
     //impty players controlled boxes

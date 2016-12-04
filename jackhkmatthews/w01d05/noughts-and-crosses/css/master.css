@@ -2,50 +2,188 @@ body {
 }
 
 main {
-    padding: 20px;
     text-align: center;
-    background-color: #294f8a;
+    background-color: #f8f8f8;
+    width: 400px;
+    height: 530px;
+    margin: 36px auto;
+    position: relative;
+    font-family: arial;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
+    color: rgba(0,0,0,.54);
 }
 
 .board-container {
     width: 300px;
     height: 300px;
+    padding: 25px;
     margin: 0 auto;
 }
 
 ul.board {
     padding: 0;
     list-style: none;
+    margin: 0;
 }
 
 li.box {
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
+    width: 86px;
+    height: 86px;
+    line-height: 88px;
     float: left;
+    border: 2px solid rgba(248, 248, 248, 0.48);
+    border-radius: 50%;
+    margin: 5px;
+    font-size: 34px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-li.box:hover {
-    background: orange;
+li.box.hover:hover {
+    background: rgba(248, 248, 248, 0.18);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.76);
 }
 
 li.box.x {
-    color: white;
-    background-color: black;
 }
 
 li.box.naught {
-    color: black;
-    background-color: white;
 }
 
 @keyframes flashing {
-    to {background-color: yellow;}
-}
+    0% {background-color:rgba(19, 149, 186, 0.0);}
+    50%  {
+    border: 2px solid rgba(248, 248, 248, 1); color: white;}
+    100% {background-color:rgba(19, 149, 186, 0.0);}
+    }
 
 /* The element to apply the animation to */
 li.box.flashing {
   animation-name: flashing;
-  animation-duration: 1s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
+}
+
+@keyframes not-flashing {
+    0% {background-color:rgba(19, 149, 186, 0.0);}
+    50%  {
+    border: 2px solid rgba(248, 248, 248, 0); color: rgba(248, 248, 248, 0.0);}
+    100% {background-color:rgba(19, 149, 186, 0.0);}
+    }
+
+/* The element to apply the animation to */
+li.box.not-flashing {
+  animation-name: not-flashing;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.title-container {
+    height: 49px;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+}
+
+.turn-container {
+    height: 79px;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+}
+
+.x-container {
+    background: white;
+    float: left;
+    width: 150px;
+    height: 35px;
+    position: absolute;
+    left: 35px;
+    top: 20px;
+}
+
+.naught-container {
+    background: white;
+    float: right;
+    width: 140px;
+    height: 35px;
+    position: absolute;
+    right: 35px;
+    top: 20px;
+}
+
+.reset-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 19px;
+    line-height: 50px;
+}
+
+h2 {
+    margin: 0;
+    position: relative;
+    clear: both;
+    line-height: 50px;
+    font-size: 19px;
+}
+;
+    clear: both;
+}
+
+h2#turnIndicator {
+    display: none;
+}
+
+p {
+    margin: 0;
+    line-height: 35px;
+}
+
+.board-container-container {
+    height: 349px;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+    background-color: rgba(19, 149, 186, 0.66);
+}
+
+h2#reset {
+    line-height: 50px;
+}
+
+h2#turnIndicator {
+    display: none;
+}
+
+.turn-container div {
+    box-shadow: 0 1px 1px rgba(0,0,0,.16);
+    transition: box-shadow 0.2s, border-bottom 0.2s;
+}
+
+div.next-turn {
+    border-bottom: 3px solid #62b7d0;
+    box-shadow: 0 6px 6px rgba(0,0,0,.16);
+}
+
+span.x-marker {
+    float: left;
+    padding-left: 20px;
+}
+
+span.naught-marker {
+    float: left;
+    padding-left: 20px;
+}
+
+span.naught-score {
+    float: right;
+    padding-right: 20px;
+}
+
+span.x-score {
+    float: right;
+    padding-right: 20px;
 }

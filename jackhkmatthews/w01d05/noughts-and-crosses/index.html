@@ -7,22 +7,41 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <main>
-      <h1>Noughts and Crosses</h1>
-      <h2 id="turnIndicator">x is next</h2>
-      <button type="button" name="button" id="reset" class="reset-button">Reset</button>
-      <div class="board-container">
-        <ul class="board">
-          <li class="box" id="box0"></li>
-          <li class="box" id="box1"></li>
-          <li class="box" id="box2"></li>
-          <li class="box" id="box3"></li>
-          <li class="box" id="box4"></li>
-          <li class="box" id="box5"></li>
-          <li class="box" id="box6"></li>
-          <li class="box" id="box7"></li>
-          <li class="box" id="box8"></li>
-        </ul>
+    <main class="app">
+      <div class="title-container">
+        <h1>Noughts and Crosses</h1>
+      </div>
+      <div class="turn-container">
+        <div class="x-container next-turn" id="xContainer">
+          <p>
+            <span class="x-marker">X&nbsp:</span>
+            <span class="x-score" id="xScore">0</span>
+          </p>
+        </div>
+        <div class="naught-container" id="naughtContainer">
+          <p>
+            <span class="naught-marker">O&nbsp:</span>
+            <span class="naught-score" id="naughtScore">0</span>
+          </p>
+        </div>
+      </div>
+      <div class="board-container-container">
+        <div class="board-container">
+          <ul class="board">
+            <li class="box hover" id="box0"></li>
+            <li class="box hover" id="box1"></li>
+            <li class="box hover" id="box2"></li>
+            <li class="box hover" id="box3"></li>
+            <li class="box hover" id="box4"></li>
+            <li class="box hover" id="box5"></li>
+            <li class="box hover" id="box6"></li>
+            <li class="box hover" id="box7"></li>
+            <li class="box hover" id="box8"></li>
+          </ul>
+        </div>
+      </div>
+      <div id="reset" class="reset-container">
+        <h2 class="reset-button">Reset</h2>
       </div>
     </main>
   </body>
