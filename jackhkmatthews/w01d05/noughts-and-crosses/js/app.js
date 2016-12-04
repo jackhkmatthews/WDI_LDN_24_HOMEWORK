@@ -22,8 +22,8 @@ function app() {
   var naughtScoreElement     = document.getElementById('naughtScore');
   var xScore                 = 0;
   var naughtScore            = 0;
-  var xContainer             = document.getElementById('xContainer');
-  var naughtContainer             = document.getElementById('naughtContainer');
+  var xScoreContainer        = document.getElementById('xScoreContainer');
+  var naughtScoreContainer   = document.getElementById('naughtScoreContainer');
   var resetButton            = document.getElementById('reset');
   var xIsNext                = true;
   var playerXBoxes           =[];
@@ -52,23 +52,23 @@ function app() {
     }
   }
 
-  //boxes click event function
+  //boxes click event callback function
   function onBoxClick(){
     //if box has already been clicked (class includes 'clicked')
     var clicked = this.className.includes('clicked');
     if(!clicked){
       //if xIsNext variable is true
       if(xIsNext){
-        //set box inner html to 0, add class background black and color white
+        //set box inner html to x and add class for player who clicked
         updateBox(this, 'x');
         //store playerX's move in playerXBoxes
         playerXBoxes.push(this.id);
         //check if x has won
         checkForWinner(playerXBoxes);
-        //set turn indicator innerhtml to "0 is next"
-        updateTurnIndicator();
         //reverse xIsNext
         xIsNext = !xIsNext;
+        //change turn indicator div classes
+        updateTurnIndicator();
       //else if 0 is next
       } else if (!xIsNext) {
         //set box inner html to 0, add class background black and color white
@@ -77,10 +77,10 @@ function app() {
         playerNaughtBoxes.push(this.id);
         //test if 0 has won
         checkForWinner(playerNaughtBoxes);
-        //set turn indicator innerhtml to "X is next"
-        updateTurnIndicator();
         //reverse xIsNextVariable
         xIsNext = !xIsNext;
+        //set turn indicator innerhtml to "X is next"
+        updateTurnIndicator();
       }
       //add clicked class to li
       this.className += ' clicked';
@@ -113,10 +113,8 @@ function app() {
         for (var k = 0; k < boxes.length; k ++) {
           boxes[k].className += ' not-flashing';
         }
-        //replace alert / flashing class to appropriate boxes
-        document.getElementById(box0).className = document.getElementById(box0).className.replace(' not-flashing', ' flashing');
-        document.getElementById(box1).className = document.getElementById(box1).className.replace(' not-flashing', ' flashing');
-        document.getElementById(box2).className = document.getElementById(box2).className.replace(' not-flashing', ' flashing');
+        //replace alert / flashing class on appropriate winning boxes
+        updatedWinningBoxes(box0, box1, box2);
         //unbind box click event to prevent users playing (restrict user interaction)
         for (var j = 0; j < boxes.length; j ++) {
           boxes[j].removeEventListener('click', onBoxClick);
@@ -128,14 +126,10 @@ function app() {
     }
   }
 
-  function updateTurnIndicator(){
-    xContainer.className = xContainer.className.replace('next-turn', '');
-    naughtContainer.className = naughtContainer.className.replace('next-turn', '');
-    if (!xIsNext){
-      xContainer.className += ' next-turn';
-    } else if (xIsNext){
-      naughtContainer.className += ' next-turn';
-    }
+  function updatedWinningBoxes(box0, box1, box2){
+    document.getElementById(box0).className = document.getElementById(box0).className.replace(' not-flashing', ' flashing');
+    document.getElementById(box1).className = document.getElementById(box1).className.replace(' not-flashing', ' flashing');
+    document.getElementById(box2).className = document.getElementById(box2).className.replace(' not-flashing', ' flashing');
   }
 
   function updateScoreIndicator(){
@@ -146,6 +140,16 @@ function app() {
     } else if (xIsNext) {
       xScore += 1;
       xScoreElement.innerHTML = xScore;
+    }
+  }
+
+  function updateTurnIndicator(){
+    xScoreContainer.className = xScoreContainer.className.replace('next-turn', '');
+    naughtScoreContainer.className = naughtScoreContainer.className.replace('next-turn', '');
+    if (xIsNext){
+      xScoreContainer.className += ' next-turn';
+    } else if (!xIsNext){
+      naughtScoreContainer.className += ' next-turn';
     }
   }
 

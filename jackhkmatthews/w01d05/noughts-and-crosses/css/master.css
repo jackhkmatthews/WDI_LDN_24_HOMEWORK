@@ -187,3 +187,7 @@ span.x-score {
     float: right;
     padding-right: 20px;
 }
+
+h2.reset-button:hover {
+    background-color: rgba(98, 183, 208, 0.24);
+}
