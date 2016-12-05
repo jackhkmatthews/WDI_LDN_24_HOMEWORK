@@ -44,7 +44,7 @@ li.box {
 
 li.box.hover:hover {
     background: rgb(122, 206, 230);
-    box-shadow: 0 5px 5px rgba(0,0,0,0.46);
+    box-shadow: 0 7px 7px rgba(0,0,0,0.46);
 }
 
 
