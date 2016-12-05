@@ -1,3 +1,21 @@
+var xIsNext                = true;
+var playerXBoxes           = [];
+var playerNaughtBoxes      = [];
+var winningBoxCombinations = [
+                          ['box0', 'box1', 'box2'], //rows
+                          ['box3', 'box4', 'box5'],
+                          ['box6', 'box7', 'box8'],
+                          ['box0', 'box3', 'box6'], //columns
+                          ['box1', 'box4', 'box7'],
+                          ['box2', 'box5', 'box8'],
+                          ['box0', 'box4', 'box8'], //diagonals
+                          ['box2', 'box4', 'box6']
+];
+var xScore                 = 0;
+var naughtScore            = 0;
+var isExpanded             = false;
+
+
 //wait for doc to load
 window.onload = app;
 
@@ -18,55 +36,42 @@ function app() {
   //wining combinations of boxes - player 'controls' these boxes to win
 
   var expandButton           = document.getElementById('title-container');
-  var isExpanded             = false;
   var appContainer           = document.getElementById('app-container');
   var boxes                  = document.getElementsByClassName('box');
   var xScoreElement          = document.getElementById('xScore');
   var naughtScoreElement     = document.getElementById('naughtScore');
-  var xScore                 = 0;
-  var naughtScore            = 0;
   var xScoreContainer        = document.getElementById('xScoreContainer');
   var naughtScoreContainer   = document.getElementById('naughtScoreContainer');
   var resetButton            = document.getElementById('reset');
-  var xIsNext                = true;
-  var playerXBoxes           =[];
-  var playerNaughtBoxes      = [];
-  var winningBoxCombinations = [
-                            ['box0', 'box1', 'box2'], //rows
-                            ['box3', 'box4', 'box5'],
-                            ['box6', 'box7', 'box8'],
-                            ['box0', 'box3', 'box6'], //columns
-                            ['box1', 'box4', 'box7'],
-                            ['box2', 'box5', 'box8'],
-                            ['box0', 'box4', 'box8'], //diagonals
-                            ['box2', 'box4', 'box6']
-  ];
 
   //make expandButton listen for click and expand on click
-  expandButton.addEventListener('click', function(){
+  makeExpandListen(expandButton);
+
+  function makeExpandListen(element){
+    element.addEventListener('click', onExpandClick);
+  }
+
+  function onExpandClick(){
     if (!isExpanded){
       appContainer.style.height = '530px';
     } else {
       appContainer.style.height = '49px';
     }
     isExpanded = !isExpanded;
-  });
+  }
 
   //make each box listen for clicks with onBoxClick callback
-  makeBoxesListen(onBoxClick);
-
-  //make reset button listen for clicks with onResetClick callback
-  resetButton.addEventListener('click', onResetClick);
+  makeBoxesListen(boxes);
 
   //make boxes listen function
-  function makeBoxesListen(func) {
+  function makeBoxesListen(boxes) {
     for (var i = 0; i < boxes.length; i ++) {
-      boxes[i].addEventListener('click', func);
+      boxes[i].addEventListener('click', onBoxClick(boxes));
     }
   }
 
   //boxes click event callback function
-  function onBoxClick(){
+  function onBoxClick(boxes){
     //if box has already been clicked (class includes 'clicked')
     var clicked = this.className.includes('clicked');
     if(!clicked){
@@ -77,7 +82,7 @@ function app() {
         //store playerX's move in playerXBoxes
         playerXBoxes.push(this.id);
         //check if x has won
-        checkForWinner(playerXBoxes);
+        checkForWinner(playerXBoxes, boxes);
         //reverse xIsNext
         xIsNext = !xIsNext;
         //change turn indicator div classes
@@ -89,7 +94,7 @@ function app() {
         //and store playerNaught's move in playerNaughtBoxes
         playerNaughtBoxes.push(this.id);
         //test if 0 has won
-        checkForWinner(playerNaughtBoxes);
+        checkForWinner(playerNaughtBoxes, boxes);
         //reverse xIsNextVariable
         xIsNext = !xIsNext;
         //set turn indicator innerhtml to "X is next"
@@ -113,7 +118,7 @@ function app() {
   }
 
   //function to check each players contorled boxes for a winning combination
-  function checkForWinner (playersControledBoxes) {
+  function checkForWinner (playersControledBoxes, boxes) {
     //get each array from the winning combination array of arrays
     for (var i = 0; i < winningBoxCombinations.length; i ++){
       //winning boxes currently being tested
@@ -166,18 +171,26 @@ function app() {
     }
   }
 
+  //make reset button listen for clicks with onResetClick callback
+  makeResetButtonListen(resetButton, boxes);
+
+  //reset button listen function
+  function makeResetButtonListen(element, boxes){
+    element.addEventListener('click', onResetClick(boxes));
+  }
+
   //reset button should clear board and make lis listen again
-  function onResetClick(){
+  function onResetClick(boxes){
     //reset all box classes and html
     for (var i = 0; i < boxes.length; i ++) {
       boxes[i].className = 'box hover';
       boxes[i].innerHTML = '';
     }
-    //impty players controlled boxes
+    //empty players controlled boxes
     playerXBoxes =[];
     playerNaughtBoxes = [];
     //make lis listen again
-    makeBoxesListen(onBoxClick);
+    makeBoxesListen(boxes);
   }
 
 }//end of onload app
