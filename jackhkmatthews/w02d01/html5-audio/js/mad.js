@@ -5,10 +5,11 @@ var main;
 
 //todo:
 // 1. auto generate navigation within functions
-// 2. remove audio tags from DOM
+// 2. remove audio tags from DOM with improved click event logic
 // 3. different button styles for each page
 // 4. names on buttons
 // 5. font styling
+// 6. name annonymouse functions
 
 function Soundboard(title, className, gridBase, width, backingTrackObject, soundBitesObject, backgroundImagePath){
   this.title                      = title;
