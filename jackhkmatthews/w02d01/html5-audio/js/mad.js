@@ -2,10 +2,21 @@ console.log('js loaded');
 var body;
 var main;
 
-function Soundboard(title, gridBase, width, backingTrackObject, soundBitesObject, backgroundImagePath){
+
+//todo:
+// 1. auto generate navigation within functions
+// 2. remove audio tags from DOM
+// 3. different button styles for each page
+// 4. names on buttons
+// 5. font styling
+
+function Soundboard(title, className, gridBase, width, backingTrackObject, soundBitesObject, backgroundImagePath){
   this.title                      = title;
+  this.className                  = className;
   this.gridBase                   = gridBase;
   this.width                      = width;
+  this.margin                     = ((this.width / this.gridBase) / 10);
+  this.cellWidth                  = (this.width / this.gridBase) - (2 * this.margin);
   this.backingTrack               = backingTrackObject;
   this.soundBitesObject           = soundBitesObject;
   this.soundBitesLocationArray    = Object.values(soundBitesObject);
@@ -50,10 +61,11 @@ function Soundboard(title, gridBase, width, backingTrackObject, soundBitesObject
     grid.className = 'clearfix';
     for (var i = 0; i < this.numberOfSoundBites; i++) {
       var cell = document.createElement('li');
-      cell.setAttribute('class', this.soundBitesNameArray[i]);
-      cell.style.width = (this.width / this.gridBase)  + 'px';
+      cell.setAttribute('class', this.soundBitesNameArray[i] + ' ' + this.className);
+      cell.style.width = this.cellWidth  + 'px';
       cell.style.height = cell.style.width;
       cell.style.lineHeight = cell.style.height;
+      cell.style.margin = this.margin + 'px';
       cell.innerHTML = this.soundBitesNameArray[i];
       grid.appendChild(cell);
     }
@@ -68,7 +80,8 @@ function Soundboard(title, gridBase, width, backingTrackObject, soundBitesObject
   };
 
   this.playAudio = function(){
-    var audio = document.querySelector('audio.' + this.className);
+    console.log(this.className);
+    var audio = document.querySelector('audio.' + this.className.split(' ')[0]);
     audio.play();
   };
 }
@@ -83,7 +96,7 @@ function app(){
 };
 
 function createDaftPunkBoardAndStart(){
-  var DaftPunkSoundboard = new Soundboard('Daft Punk', 4, 400,
+  var DaftPunkSoundboard = new Soundboard('Daft Punk', 'daft-punk', 4, 400,
     {
       name: 'backing track',
       location: 'file/files.wav'
@@ -112,19 +125,21 @@ function createDaftPunkBoardAndStart(){
 }
 
 function createHomerBoardAndStart(){
-  var HomerSimpsonSoundboard = new Soundboard('Homer Simpson', 4, 400,
+  var HomerSimpsonSoundboard = new Soundboard('Homer Simpson', 'homer', 3, 400,
     {
       name: 'backing track',
       location: 'file/files.wav'
     },
     {
       doh: 'homer-simpson/doh.mp3',
+      doh2: 'homer-simpson/doh.mp3',
       mbeernut: 'homer-simpson/mbeernut.mp3',
       mburger: 'homer-simpson/mburger.mp3',
       mchocola: 'homer-simpson/mchocola.mp3',
       mcrumble: 'homer-simpson/mcrumble.mp3',
       mmurinal: 'homer-simpson/mmurinal.mp3',
-      organized: 'homer-simpson/organized.mp3'
+      organized: 'homer-simpson/organized.mp3',
+      organized2: 'homer-simpson/organized.mp3'
     },
     'homer-simpson/homer.jpeg'
   );
@@ -132,7 +147,7 @@ function createHomerBoardAndStart(){
 }
 
 function createRapperBoardAndStart(){
-  var RapperSoundboard = new Soundboard('Rappers', 4, 400,
+  var RapperSoundboard = new Soundboard('Rappers', 'rappers', 4, 400,
     {
       name: 'backing track',
       location: 'file/files.wav'
@@ -144,7 +159,6 @@ function createRapperBoardAndStart(){
       danny_brown: 'rappers/danny_brown.mp3',
       dizzee: 'rappers/dizzee.mp3',
       drake: 'rappers/drake.mp3',
-      eminem: 'rappers/eminem.mp3',
       jayz: 'rappers/jayz.mp3',
       kanye: 'rappers/kanye.mp3',
       kendrick: 'rappers/kendrick.mp3',
