@@ -52,7 +52,7 @@ li.box.hover:hover {
 @keyframes flashing {
     0% {background-color:rgba(19, 149, 186, 0.0);}
     50%  {
-    border: 2px solid rgba(248, 248, 248, 1); color: white; box-shadow: 0 15px 15px rgba(0,0,0,0.46);}
+    border: 2px solid rgba(248, 248, 248, 1); color: white; box-shadow: 0 10px 10px rgba(0,0,0,0.46);}
     100% {background-color:rgba(19, 149, 186, 0.0);}
     }
 
