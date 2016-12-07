@@ -2,7 +2,7 @@ console.log('js loaded');
 
 var body;
 var main;
-var DaftPunkSoundboard     = new Soundboard('Daft Punk', 'daft-punk', 4, 400,
+var DaftPunkSoundboard            = new Soundboard('Daft Punk', 'daft-punk', 4, 400,
   'https://www.youtube.com/embed/WSttUkU015s',
   {
     'after': 'daft-punk/after.wav',
@@ -24,7 +24,7 @@ var DaftPunkSoundboard     = new Soundboard('Daft Punk', 'daft-punk', 4, 400,
   },
   'daft-punk/daft-punk.jpg'
 );
-var HomerSimpsonSoundboard = new Soundboard('Homer Simpson', 'homer', 3, 400,
+var HomerSimpsonSoundboard        = new Soundboard('Homer Simpson', 'homer', 3, 400,
   'https://www.youtube.com/embed/Xqog63KOANc',
   {
     'doh!': 'homer-simpson/doh.mp3',
@@ -39,7 +39,7 @@ var HomerSimpsonSoundboard = new Soundboard('Homer Simpson', 'homer', 3, 400,
   },
   'homer-simpson/homer.jpeg'
 );
-var RapperSoundboard       = new Soundboard('Rappers', 'rappers', 3, 400, 'https://www.youtube.com/embed/z0cV9p2-VOg',
+var RapperSoundboard              = new Soundboard('Rappers', 'rappers', 3, 400, 'https://www.youtube.com/embed/z0cV9p2-VOg',
   {
     'Action': 'rappers/action_bronson.mp3',
     'Chains': 'rappers/two_chainz.mp3',
@@ -82,7 +82,7 @@ function Soundboard(title, className, gridBase, width, backingTrackUrl, soundBit
   this.numberOfSoundBites         = Object.keys(soundBitesObject).length;
   this.backgroundImagePath        = backgroundImagePath;
 
-  this.start = function start(){
+  this.start                      = function start(){
     console.log('soundboard started');
     main = document.getElementsByTagName('main')[0];
     body = document.getElementsByTagName('body')[0];
@@ -90,17 +90,10 @@ function Soundboard(title, className, gridBase, width, backingTrackUrl, soundBit
     body.style.backgroundImage = 'url(../' + backgroundImagePath +')';
     this.createTitle();
     this.createGrid();
-    this.playBackingTrack();
     this.makeCellsListen();
   };
 
-  this.playBackingTrack = function playBackingTrack(){
-    var iframe = document.createElement('iframe');
-    iframe.src = this.backingTrackUrl + '?autoplay=1?controls=1';
-    main.appendChild(iframe);
-  };
-
-  this.addToNav = function addToNav() {
+  this.addToNav                   = function addToNav() {
     var element = document.createElement('h2');
     element.innerHTML = this.title;
     element.className = this.className;
@@ -112,14 +105,14 @@ function Soundboard(title, className, gridBase, width, backingTrackUrl, soundBit
     nav.appendChild(element);
   };
 
-  this.createTitle = function createTitle(){
+  this.createTitle                = function createTitle(){
     var title = document.createElement('h1');
     title.innerHTML = this.title;
     title.className = this.className;
     main.appendChild(title);
   };
 
-  this.createGrid = function createGrid(){
+  this.createGrid                 = function createGrid(){
     var grid = document.createElement('ul');
     grid.style.width = this.width + 'px';
     grid.className = 'clearfix';
@@ -136,14 +129,14 @@ function Soundboard(title, className, gridBase, width, backingTrackUrl, soundBit
     main.appendChild(grid);
   };
 
-  this.makeCellsListen = function makeCellsListen(){
+  this.makeCellsListen            = function makeCellsListen(){
     for (var i = 0; i < this.numberOfSoundBites; i++) {
       var cell = document.querySelector('li.' + this.cellClassNames[i]);
       cell.addEventListener('click', this.playAudio.bind(this));
     }
   };
 
-  this.playAudio = function playAudio(e){
+  this.playAudio                  = function playAudio(e){
     var name = e.target.className.split(' ')[0];
     var index = this.cellClassNames.indexOf(name);
     new Audio(this.soundBitesLocationArray[index]).play();
