@@ -1,14 +1,5 @@
 console.log('js loaded');
 
-//todo:
-// 1. auto generate navigation within functions DONE
-// 2. remove audio tags from DOM with improved click event logic DONE
-// 3. different button styles for each page DONE
-// 4. names on buttons DONE
-// 5. font styling DONE
-// 6. name annonymouse functions DONE
-//7. backing track - not quite
-
 var body;
 var main;
 var DaftPunkSoundboard     = new Soundboard('Daft Punk', 'daft-punk', 4, 400,
