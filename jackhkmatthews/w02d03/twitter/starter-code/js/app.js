@@ -15,9 +15,7 @@ var feed           = {
     text: '',
     user_thumbnail: 'http://facehoff.herokuapp.com/50/50'
   },
-  charactersLeft: 140,
-  charactersUsed: 0,
-  
+
   createStreamItem: function createStreamItem(name, screen_name, created_at, text, user_thumbnail ){
 
     //creating content div
@@ -27,8 +25,12 @@ var feed           = {
     var $span2 = $(document.createElement('span')).html('@');
     var $b = $(document.createElement('b')).html(screen_name);
     var $span3 = $(document.createElement('span')).html('&nbsp;&middot;&nbsp;');
-    var weeksAgo = parseInt((Date.now() - Date.parse(created_at)) / (604800000));
-    var $small = $(document.createElement('small')).addClass('time').html(weeksAgo + ' weeks ago');
+    var millisecondsAgo = (Date.now() - Date.parse(created_at));
+    var weeksAgo = parseInt(millisecondsAgo/604800000);
+    console.log(weeksAgo);
+    var daysAgo = Math.floor((weeksAgo*(604800000))/(604800000/7));
+    var hoursAgo = Math.floor((daysAgo*(604800000/7))/(604800000/(7*24)));
+    var $small = $(document.createElement('small')).addClass('time').html(millisecondsAgo + + 'l' + weeksAgo + ' weeks, ' + daysAgo + ' days and ' + hoursAgo + ' hours ago.');
     var $p = $(document.createElement('p')).html(text);
     $content.append([$fullname, $span1, $span2, $b, $span3, $small, $p]);
 
@@ -62,12 +64,12 @@ var feed           = {
     newTweet.text = $('#new-tweet-input').val();
   },
 
-
   updateFeed: function updateFeed(){
     $.each(tweets.reverse(), feed.appendTweets);
   },
 
   appendTweets: function appendTweets(){
+    console.log(this.created_at);
     var child = feed.createStreamItem(this.name, this.screen_name, this.created_at, this.text, this.user_thumbnail);
     $('.stream-items').prepend(child);
   },
@@ -76,19 +78,16 @@ var feed           = {
     $('[type="submit"]').on('click', feed.postNewTweet.bind(newTweet));
   },
 
-  lowerCharactersLeft: function lowerCharactersLeft(e){
-    if (e.which !== 8 && feed.charactersLeft > 0) {
-      feed.charactersLeft -= 1;
-      $('.tweet-counter').html(feed.charactersLeft);
-    }
+  makeFormListen: function makeFormListen(){
+    $('#new-tweet-input').on('keydown', feed.updateCharatersLeft);
   },
 
-  increaseCharactersLeft: function increaseCharactersLeft(e){
-    if (e.which === 8 && feed.charactersLeft < 140) {
-      feed.charactersLeft += 1;
-      $('.tweet-counter').html(feed.charactersLeft);
-    }
+  updateCharatersLeft: function updateCharatersLeft(){
+    var charactersUsed = $(this).val().length;
+    var charactersLeft = (140 - charactersUsed);
+    $('.tweet-counter').html(charactersLeft);
   }
+
 };
 
 $(start);
@@ -96,6 +95,5 @@ $(start);
 function start() {
   feed.updateFeed();
   feed.makeSubmitListen();
-  $('#new-tweet-input').on('keypress', feed.lowerCharactersLeft);
-  $('#new-tweet-input').on('keydown', feed.increaseCharactersLeft);
+  feed.makeFormListen();
 }
