@@ -106,7 +106,6 @@ function Soundboard(title, className, gridBase, width, backingTrackUrl, soundBit
   this.playBackingTrack = function playBackingTrack(){
     var iframe = document.createElement('iframe');
     iframe.src = this.backingTrackUrl + '?autoplay=1?controls=1';
-    iframe.volume = 0.2;
     main.appendChild(iframe);
   };
 
