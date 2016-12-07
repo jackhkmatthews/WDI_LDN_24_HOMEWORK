@@ -1,3 +1,30 @@
+@font-face {
+  font-family: "Simpsons";
+  src: url("../Simpsonfont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dizzee";
+  src: url("../Origami.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Daft Punk";
+  src: url("../Daftfont.ttf") format("truetype");
+}
+
+.homer {
+    font-family: Simpsons;
+}
+
+.rappers {
+    font-family: Dizzee;
+}
+
+.daft-punk {
+    font-family: "Daft Punk";
+}
+
 body {
   text-align: center;
   font-family: arial;
@@ -18,7 +45,7 @@ li {
     border: 2px solid rgba(0, 0, 0, 0.48);
     border-radius: 50%;
     color: rgb(0, 0, 0);
-    transition: box-shadow 0.7s, background-color 0.7s;
+    transition: box-shadow 0.7s, background-color 0.7s, color 0.7s;
     box-sizing: border-box;
     list-style: none;
     /* margin: 10px; */
@@ -40,18 +67,50 @@ li:hover {
 h2 {
     display: inline-block;
     margin: 10px;
+    transition: text-shadow 0.5s;
 }
 
 h2:hover {
-    color: #59aec7;
+    text-shadow: 0 7px 7px rgba(0,0,0,0.46);
 }
 
 li.homer {
     border: 6px solid black;
     border-radius: 29px;
     background-color: white;
+    /* font-family: Simpsons; */
 }
 
 li.homer:hover {
     background-color: #d4318d;
+}
+
+li.rappers {
+    font-weight: bold;
+    border: 1px;
+    border-style: dashed;
+    border-color: black;
+    background: #fedc38;
+    transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
+}
+
+li.rappers:hover {
+    color: yellow;
+    background: black;
+    box-shadow: none;
+}
+
+main {}
+
+li.daft-punk {
+    border-radius: 0px;
+    color: black;
+    border-color: black;
+    background-color: white;
+    transition: box-shadow 0.2s, background-color 0.2s, color 0.2s;
+}
+
+li.daft-punk:hover {
+}
+k:hover {
 }
