@@ -1,43 +1,53 @@
+//to do
+//1. fix time ago
+
+$(start);
+
+function start() {
+  feed.updateFeed();
+  feed.makeSubmitListen();
+  feed.makeFormListen();
+  feed.makeNewTweetBannerListen();
+}
+
 var tweets         = window.tweets;
-var newTweet       = {
-  created_at: '',
-  name: 'Jack Matthews',
-  screen_name: 'jackhkm',
-  text: '',
-  user_thumbnail: 'http://facehoff.herokuapp.com/50/50'
-};
 var feed           = {
   tweets: window.tweets,
   newTweet: {
-    created_at: '2016-12-07 14:11:39 +0000',
+    created_at: '',
     name: 'Jack Matthews',
     screen_name: 'jackhkm',
     text: '',
-    user_thumbnail: 'http://facehoff.herokuapp.com/50/50'
+    user_thumbnail: 'https://scontent-ams3-1.xx.fbcdn.net/t31.0-8/10631166_10153788079528428_7008510206964561499_o.jpg'
+  },
+  newTweetElement: '',
+
+  updateFeed: function updateFeed(){
+    $.each(tweets.reverse(), feed.appendTweets);
   },
 
-  createStreamItem: function createStreamItem(name, screen_name, created_at, text, user_thumbnail ){
+  appendTweets: function appendTweets(){
+    var child = feed.createStreamItem(this.name, this.screen_name, this.created_at, this.text, this.user_thumbnail);
+    $('.stream-items').prepend(child);
+  },
+
+  createStreamItem: function createStreamItem(name, screenName, createdAt, text, userThumbnail ){
 
     //creating content div
     var $content = $(document.createElement('div')).addClass('content');
     var $fullname = $(document.createElement('strong')).html(name);
     var $span1 = $(document.createElement('span')).html('&rlm;');
     var $span2 = $(document.createElement('span')).html('@');
-    var $b = $(document.createElement('b')).html(screen_name);
+    var $b = $(document.createElement('b')).html(screenName);
     var $span3 = $(document.createElement('span')).html('&nbsp;&middot;&nbsp;');
-    var millisecondsAgo = (Date.now() - Date.parse(created_at));
-    var weeksAgo = parseInt(millisecondsAgo/604800000);
-    console.log(weeksAgo);
-    var daysAgo = Math.floor((weeksAgo*(604800000))/(604800000/7));
-    var hoursAgo = Math.floor((daysAgo*(604800000/7))/(604800000/(7*24)));
-    var $small = $(document.createElement('small')).addClass('time').html(millisecondsAgo + + 'l' + weeksAgo + ' weeks, ' + daysAgo + ' days and ' + hoursAgo + ' hours ago.');
+    var $small = $(document.createElement('small')).addClass('time').html(createdAt);
     var $p = $(document.createElement('p')).html(text);
     $content.append([$fullname, $span1, $span2, $b, $span3, $small, $p]);
 
     //a tag and img
     var $a = $(document.createElement('a')).attr('href', '#');
     var $img = $(document.createElement('img'));
-    $img.attr('src', user_thumbnail);
+    $img.attr('src', userThumbnail);
     $img.attr('alt', 'user image goaes here');
     $a.append($img);
 
@@ -52,30 +62,31 @@ var feed           = {
     return($li);
   },
 
-  postNewTweet: function postNewTweet(e){
-    e.preventDefault();
-    feed.updateNewTweet();
-    console.log(feed.newTweet.created_at);
-    var html = feed.createStreamItem(this.name, this.screen_name, feed.newTweet.created_at, this.text, this.user_thumbnail);
-    $('.stream-items').prepend(html);
+  makeSubmitListen: function makeSubmitListen(){
+    $('[type="submit"]').on('click', function(e){
+      e.preventDefault();
+      if ($('#new-tweet-input').val().length > 0 && $('#new-tweet-input').val().length < 141){
+        feed.updateNewTweet();
+        feed.updateForm();
+        feed.createNewTweetElement();
+        $('#new-tweets-bar').slideDown();
+      }
+    });
   },
 
   updateNewTweet: function updateNewTweet(){
-    newTweet.text = $('#new-tweet-input').val();
+    feed.newTweet.text = $('#new-tweet-input').val();
+    feed.newTweet.created_at = new Date();
   },
 
-  updateFeed: function updateFeed(){
-    $.each(tweets.reverse(), feed.appendTweets);
+  updateForm: function updateForm(){
+    $('#new-tweet-input').val('');
+    $('.tweet-counter').html(140);
+    $('.tweet-counter').css('color', '#8899a6');
   },
 
-  appendTweets: function appendTweets(){
-    console.log(this.created_at);
-    var child = feed.createStreamItem(this.name, this.screen_name, this.created_at, this.text, this.user_thumbnail);
-    $('.stream-items').prepend(child);
-  },
-
-  makeSubmitListen: function makeSubmitListen(){
-    $('[type="submit"]').on('click', feed.postNewTweet.bind(newTweet));
+  createNewTweetElement: function createNewTweetElement(){
+    feed.newTweetElement = feed.createStreamItem(feed.newTweet.name, feed.newTweet.screen_name, feed.newTweet.created_at, feed.newTweet.text, feed.newTweet.user_thumbnail);
   },
 
   makeFormListen: function makeFormListen(){
@@ -85,15 +96,25 @@ var feed           = {
   updateCharatersLeft: function updateCharatersLeft(){
     var charactersUsed = $(this).val().length;
     var charactersLeft = (140 - charactersUsed);
+    if (charactersLeft < 0){
+      $('.tweet-counter').css('color', 'rgba(255, 0, 0, 0.69)');
+    } else {
+      $('.tweet-counter').css('color', '#8899a6');
+    }
     $('.tweet-counter').html(charactersLeft);
+  },
+
+  makeNewTweetBannerListen: function makeNewTweetBannerListen(){
+    console.log('hi');
+    $('#new-tweets-bar').on('click', feed.showNewTweet);
+  },
+
+  showNewTweet: function showNewTweet(){
+    $(feed.newTweetElement).hide().prependTo($('.stream-items')).slideDown('slow', function(){
+      setTimeout(function(){
+        $('#new-tweets-bar').slideUp('slow');
+      }, 2000);
+    });
   }
 
 };
-
-$(start);
-
-function start() {
-  feed.updateFeed();
-  feed.makeSubmitListen();
-  feed.makeFormListen();
-}

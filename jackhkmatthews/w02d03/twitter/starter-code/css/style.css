@@ -12,7 +12,7 @@ h1 {
   margin: 0;
 }
 
-a { 
+a {
   color: #47A1D3;
   text-decoration: none;
 }
@@ -36,7 +36,7 @@ header {
 
 #timeline {
   margin: 0 auto;
-  width: 590px; 
+  width: 590px;
 }
 
 .timeline-tweet-box {
@@ -135,7 +135,7 @@ input[type="submit"] {
 
 #new-tweets-bar:hover {
   background: #e1e8ed;
-} 
+}
 
 .stream {
   background: #fff;
