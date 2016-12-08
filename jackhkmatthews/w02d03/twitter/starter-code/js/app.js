@@ -1,5 +1,30 @@
-//to do
-//1. fix time ago
+function timeSince(milliSecs) {
+
+  var seconds = Math.floor((Date.parse(new Date()) - milliSecs) / 1000);
+
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + ' years ago';
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + ' months ago';
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + ' days ago';
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + ' hours ago';
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + ' minutes ago';
+  }
+  return 'Just now';
+}
 
 $(start);
 
@@ -31,7 +56,7 @@ var feed           = {
     $('.stream-items').prepend(child);
   },
 
-  createStreamItem: function createStreamItem(name, screenName, createdAt, text, userThumbnail ){
+  createStreamItem: function createStreamItem(name, screenName, createdAt, text, userThumbnail, newTweetFlag ){
 
     //creating content div
     var $content = $(document.createElement('div')).addClass('content');
@@ -40,7 +65,9 @@ var feed           = {
     var $span2 = $(document.createElement('span')).html('@');
     var $b = $(document.createElement('b')).html(screenName);
     var $span3 = $(document.createElement('span')).html('&nbsp;&middot;&nbsp;');
-    var $small = $(document.createElement('small')).addClass('time').html(createdAt);
+    var timeHtml = timeSince(Date.parse(createdAt));
+    var $small = $(document.createElement('small')).addClass('time').html(timeHtml);
+    $small.attr('data', Date.parse(createdAt));
     var $p = $(document.createElement('p')).html(text);
     $content.append([$fullname, $span1, $span2, $b, $span3, $small, $p]);
 
@@ -56,7 +83,7 @@ var feed           = {
     $div.append([$a, $content]);
 
     //creating stream item
-    var $li = $(document.createElement('li')).addClass('stream-item');
+    var $li = $(document.createElement('li')).addClass('stream-item ' + newTweetFlag);
     $li.append($div);
 
     return($li);
@@ -86,7 +113,7 @@ var feed           = {
   },
 
   createNewTweetElement: function createNewTweetElement(){
-    feed.newTweetElement = feed.createStreamItem(feed.newTweet.name, feed.newTweet.screen_name, feed.newTweet.created_at, feed.newTweet.text, feed.newTweet.user_thumbnail);
+    feed.newTweetElement = feed.createStreamItem(feed.newTweet.name, feed.newTweet.screen_name, feed.newTweet.created_at, feed.newTweet.text, feed.newTweet.user_thumbnail, 'new-tweet');
   },
 
   makeFormListen: function makeFormListen(){
@@ -105,7 +132,6 @@ var feed           = {
   },
 
   makeNewTweetBannerListen: function makeNewTweetBannerListen(){
-    console.log('hi');
     $('#new-tweets-bar').on('click', feed.showNewTweet);
   },
 
