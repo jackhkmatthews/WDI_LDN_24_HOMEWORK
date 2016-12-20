@@ -1,6 +1,6 @@
 const express        = require('express');
 const morgan         = require('morgan');
-const port           = process.env.PORT || 3000;
+const port           = process.env.PORT || 4000;
 const expressLayouts = require('express-ejs-layouts');
 const router         = require('./config/router').router;
 
