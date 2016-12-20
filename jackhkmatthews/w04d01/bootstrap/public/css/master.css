@@ -1,0 +1,56 @@
+header {
+  padding-top: 40px;
+}
+
+.nav>li>a {
+  padding-left: 0px
+}
+
+a.pic1 {
+  background: linear-gradient(to bottom right, #6190E8, #A7BFE8);
+}
+a.pic4 {
+  background: linear-gradient(to bottom right, #4568DC, #B06AB3);
+}
+a.pic3 {
+  background: linear-gradient(to bottom right, #43C6AC, #191654);
+}
+a.pic2 {
+  background: linear-gradient(to bottom right, #ee0979, #ff6a00);
+}
+a.pic5 {
+  background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+}
+a.pic6 {
+  background: linear-gradient(to bottom right, #ff00cc, #333399);
+}
+a.pic7 {
+  background: linear-gradient(to bottom right, #2C3E50, #FD746C);
+}
+
+h3 {
+    padding: 30px 0px;
+}
+
+p {
+    padding: 30px 0px;
+}
+
+.col-xs-12.col-sm-6 {
+    padding: 0;
+}
+
+a.thumbnail {
+    margin: 0;
+    /* border: 0px; */
+    border-radius: 0px;
+}
+
+.jumbotron {
+    background: linear-gradient(to bottom right, #6190E8, #A7BFE8);
+}
+
+h3.title {
+    margin: 0;
+    /* color: white; */
+}
