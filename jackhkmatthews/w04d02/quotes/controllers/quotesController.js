@@ -1,5 +1,10 @@
 const quotes = require('../data/quotes.js');
 
+//landing
+function quotesLanding(req, res) {
+  res.render('home');
+}
+
 //index (no show)
 function quotesIndex(req, res){
   res.render('index', {quotes});
@@ -22,7 +27,7 @@ function quotesEdit(req, res) {
 
 //update
 function quotesUpdate(req, res) {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   const index = quotes.findIndex(quote => {
     return quote.id === parseInt(req.params.id);
   });
@@ -32,8 +37,35 @@ function quotesUpdate(req, res) {
   res.redirect('/');
 }
 
+//new
+function quotesNew(req, res){
+  return res.render('new', { quotes });
+}
+
+//create
+function quotesCreate(req, res){
+  const id = (quotes.length +1);
+  const quote = req.body.quote;
+  quote.id = id;
+  quotes[quotes.length] = quote;
+  res.redirect('/');
+}
+
+//delete
+function quotesDelete(req, res){
+  const index = quotes.findIndex(quote => {
+    return quote.id === parseInt(req.params.id);
+  });
+  quotes.splice(index, 1);
+  res.redirect('/');
+}
+
 module.exports = {
+  landing: quotesLanding,
   index: quotesIndex,
   edit: quotesEdit,
-  update: quotesUpdate
+  update: quotesUpdate,
+  new: quotesNew,
+  create: quotesCreate,
+  delete: quotesDelete
 };

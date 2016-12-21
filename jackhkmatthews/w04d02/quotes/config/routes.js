@@ -4,24 +4,25 @@ const quotesController = require('../controllers/quotesController');
 
 //routes
 
+//home
+router.get('/', quotesController.landing);
 
-//index (no show)
-router.get('/', (req, res) => res.redirect('/quotes'));
+//index
 router.get('/quotes', quotesController.index);
 
 //edit
 router.get('/quotes/:id/edit', quotesController.edit);
 
 //update
-router.put('/quotes/:id', (req, res) => {
-  const id = req.params.id;
-  const index = quotes.findIndex(quote => {
-    return quote.id === parseInt(req.params.id);
-  });
-  const quote = req.body.quote;
-  quote.id = id;
-  quotes[index] = quote;
-  res.redirect('/');
-});
+router.put('/quotes/:id', quotesController.update);
+
+//new
+router.get('/quotes/new', quotesController.new);
+
+//create
+router.post('/quotes', quotesController.create);
+
+//delete
+router.delete('/quotes/:id', quotesController.delete);
 
 module.exports = router;

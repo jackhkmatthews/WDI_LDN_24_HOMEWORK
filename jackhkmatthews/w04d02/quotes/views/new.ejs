@@ -1,0 +1,58 @@
+<main class="container">
+  <h1>Show all quotes</h1>
+  <div class="row">
+    <% quotes.forEach(quote => { %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="<%= quote.imgSource %>" alt="">
+          <div class="caption">
+            <h3><%= quote.person %> - <%= quote.artist %></h3>
+            <p><%= quote.quote %></p>
+            <p>
+              <a href="/quotes/<%= quote.id %>/edit" class="btn btn-primary" role="button">Edit</a>
+              <form method= "post" action= "/quotes/<%= quote.id %>">
+                <input type='hidden' name='_method' value='delete'>
+                <button type="submit" class="btn btn-secondary">Delete</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+          <form class="new-form" action="/quotes" method="post">
+            <input type='hidden' name='_method' value='post'>
+            <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Person</label>
+              <div class="col-xs-10">
+                <input class="form-control" name="quote[person]" type="text" value="" id="example-text-input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-search-input" class="col-xs-2 col-form-label">Artist</label>
+              <div class="col-xs-10">
+                <input class="form-control" name="quote[artist]" type="search" value="" id="example-search-input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-quote-input" class="col-xs-2 col-form-label">Quote</label>
+              <div class="col-xs-10">
+                <input class="form-control" name="quote[quote]" type="search" value="" id="example-quote-input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="example-url-input" class="col-xs-2 col-form-label">Img Source</label>
+              <div class="col-xs-10">
+                <input class="form-control" name="quote[imgSource]" type="url" value="" id="example-url-input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</main>
