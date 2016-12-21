@@ -1,0 +1,16 @@
+{
+  "name": "memetube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-ejs-layouts": "^2.2.0",
+    "express-method-override": "0.0.3",
+    "mongoose": "^4.7.4"
+  }
+}

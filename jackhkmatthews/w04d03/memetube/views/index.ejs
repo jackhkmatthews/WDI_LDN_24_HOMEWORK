@@ -1,0 +1,17 @@
+<main class="container">
+  <h1>Index</h1>
+  <div class="row">
+    <% memes.forEach(meme => { %>
+      <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= meme.youtubeId %>" frameborder="0" allowfullscreen></iframe>
+      <div class="caption">
+      <h3>meme.name</h3>
+      <p>meme.description</p>
+      <p><a href="#" class="btn btn-primary" role="button">Update</a> <a href="#" class="btn btn-danger" role="button">Delete</a></p>
+      </div>
+      </div>
+      </div>
+      <% }) %>
+    </div>
+</main>
