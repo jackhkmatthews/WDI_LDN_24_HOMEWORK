@@ -1,219 +1,117 @@
-html, body {
-  height: 100%;
-  width: 100%;
+@font-face {
+  font-family: "Simpsons";
+  src: url("../Simpsonfont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dizzee";
+  src: url("../Origami.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Daft Punk";
+  src: url("../Daftfont.ttf") format("truetype");
+}
+
+.homer {
+    font-family: Simpsons;
+}
+
+.rappers {
+    font-family: Dizzee;
+}
+
+.daft-punk {
+    font-family: "Daft Punk";
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #0080ff;
-  font-family: helvetica,arial,sans-serif;
-  color: #FAFAFA;
   text-align: center;
-}
-
-header {
-  background-color: #ececec;
-  color: #0080ff;
-  margin-bottom: 40px;
-  box-shadow: 0px 7px 14px 2px rgba(0, 0, 0, 0.16);
-}
-
-nav {
-  height: 60px;
-  overflow: hidden;
-}
-
-nav ul {
-  float: right;
-  margin-top: 0;
-  display: block;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-nav ul li {
-  display: inline-block;
-  list-style-type: none;
-  padding: 0 20px;
-  margin: 0px;
-  line-height: 60px;
-}
-
-nav li:hover {
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-}
-
-.lyrics-container {
-  border top: 2px black solid;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  width: 70%;
-  /* border-top: 2px solid #ececec; */
-  border: 2px solid #ececec;
-   /* Standard syntax */
-  top: 286px;
-  box-shadow: 0px 0px 123px -20px rgba(0, 0, 0, 1.6);
-}
-
-.lyric-container div {
-  border: 1px red solid;
-  position: absolute;
+  font-family: arial;
   width: 100%;
 }
 
-h1 {
+ul {
+    margin: 30px auto;
+    padding: 0;
+    clear: both;
+    /* background-color: rgb(89, 174, 199); */
+    /* border: 41px solid rgba(89, 174, 199, 0); */
+    border-radius: 45px;
+}
+
+li {
     float: left;
-    margin: 0px;
-    line-height: 60px;
-    padding: 0px 10px 0px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.48);
+    border-radius: 50%;
+    color: rgb(0, 0, 0);
+    transition: box-shadow 0.7s, background-color 0.7s, color 0.7s;
+    box-sizing: border-box;
+    list-style: none;
+    /* margin: 10px; */
 }
 
-div.score {
-    font-size: 0.5em;
-    border: 2px solid #ececec;
-    padding: 14px;
-    position: absolute;
-    margin: auto;
-    left: 75%;
-    right: 0;
-    top: -6%;
-    bottom: 0;
-    width: 100px;
-    height: 66px;
-    color: #ececec;
-    display: none;
-    background: #0080ff;
-    z-index: 100;
-    box-shadow: 0px 5px 40px 1px rgba(0, 0, 0, 0.2);
+li:hover {
+    background: rgb(122, 206, 230);
+    box-shadow: 0 7px 7px rgba(0,0,0,0.46);
 }
 
-video {
-    display: none;
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
 }
 
-.lyrics-container div {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    border: 3px solid white;
-    color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 5px 40px 1px rgba(0, 0, 0, 0.2);
-    width: 70%;
+h2 {
     display: inline-block;
-    z-index: 20;
-    background-color: #0080ff;
+    margin: 10px;
+    transition: text-shadow 0.5s;
+    width: 174px;
+}
+
+h2:hover {
+    text-shadow: 0 7px 7px rgba(0,0,0,0.46);
+}
+
+li.homer {
+    border: 6px solid black;
+    border-radius: 29px;
+    background-color: white;
+    /* font-family: Simpsons; */
+}
+
+li.homer:hover {
+    background-color: #d4318d;
+}
+
+li.rappers {
     font-weight: bold;
+    border: 1px;
+    border-style: dashed;
+    border-color: black;
+    background: #fedc38;
+    transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
 
-.lyrics-container div span {
-    line-height: 40px;
+li.rappers:hover {
+    color: yellow;
+    background: black;
+    box-shadow: none;
 }
 
-#lyrics .lyrics-container div span {
-    line-height: 20px;
+main {}
+
+li.daft-punk {
+    border-radius: 0px;
+    color: black;
+    border-color: black;
+    background-color: white;
+    transition: box-shadow 0.2s, background-color 0.2s, color 0.2s;
 }
 
-.correct {
-  color: white;
+li.daft-punk:hover {
 }
-
-.score h2 {
-    margin: 0px;
-    line-height: 1.8em;
-    text-align: left;
-}
-
-nav li:hover {
-    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-}
-
-li {}
-
-button#play {
-    height: 100px;
-    width: 200px;
-    background: rgb(0, 128, 255);
-    border: 2px solid #ececec;
-    color: white;
-    margin: 20px 0 58px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 30%;
-    bottom: 0;
-    z-index: 20;
-    font-family: helvetica,arial,sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-button#play:focus {
-    outline: none;
-}
-
-form#user-form {
-    width: 200px;
-    height: 200px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-textarea#user-lyrics-html {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #0080ff;
-    border: 2px solid #ececec;
-    text-align: center;
-}
-
-input#youtube-url {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #0080ff;
-    border: 2px solid #ececec;
-    text-align: center;
-}
-
-button#submit {
-    width: 100%;
-    box-sizing: border-box;
-    button#play: focus {     outline: none; }
-    background-color: beige;
-    background-color: #0080ff;
-    border: 2px solid #ececec;
-    color: #ececec;
-}
-
-textarea#user-lyrics-html:focus {
-    outline: none;
-}
-textarea#user-lyrics-html::-webkit-input-placeholder {
-    color: white;
-}
-input#youtube-url::-webkit-input-placeholder {
-    color: white;
-}
-
-input#youtube-url:focus {
-    outline: none;
-}
-
-select {margin: 10px 10px 10px;background: #0080ff;border: 2px solid #ececec;color: #ececec;border-radius: 0px;-webkit-appearance: none;padding: 5px 10px;}
-
-li.highlighted {
-    text-decoration: underline;
-}
-
-#footer {
-    min-height: calc(100vh - 500px);
-    /* 80px header + 40px footer = 120px  */
+k:hover {
 }
