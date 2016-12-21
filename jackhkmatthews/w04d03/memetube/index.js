@@ -5,7 +5,7 @@ const router = require('./config/routes.js');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const methodOverride = require('express-method-override');
+const methodOverride = require('method-override');
 
 const databaseUrl = 'mongodb://localhost/memeTube';
 
@@ -31,10 +31,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //use method override
-app.use(methodOverride(function (req, res) {
+app.use(methodOverride(req => {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    // look in urlencoded POST bodies and delete it
-    var method = req.body._method;
+    const method = req.body._method;
     delete req.body._method;
     return method;
   }

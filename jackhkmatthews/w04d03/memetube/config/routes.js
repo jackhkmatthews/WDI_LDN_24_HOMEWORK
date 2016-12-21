@@ -15,9 +15,16 @@ router.route('/memes')
 router.route('/memes/new')
   .get(memesController.new);
 
-//delete
 
+// show, update and delete
+router.route('/memes/:id')
+  .get(memesController.show)
+  .put(memesController.update)
+  .delete(memesController.delete);
 
+// Edit
+router.route('/memes/:id/edit')
+  .get(memesController.edit);
 
 
 

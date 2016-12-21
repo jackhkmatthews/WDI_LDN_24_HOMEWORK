@@ -11,6 +11,7 @@
   "dependencies": {
     "express-ejs-layouts": "^2.2.0",
     "express-method-override": "0.0.3",
+    "method-override": "^2.3.7",
     "mongoose": "^4.7.4"
   }
 }
