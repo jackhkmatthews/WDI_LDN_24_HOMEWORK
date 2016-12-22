@@ -1,19 +1,20 @@
 <main class="container">
   <h1>Index</h1>
   <div class="row">
-    <% memes.forEach(meme => { %>
-      <div class="col-sm-6 col-md-4">
+    <% videos.forEach(video => { %>
+      <div class="col-xs-6 col-md-4">
       <div class="thumbnail">
       <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= meme.youtubeId %>" frameborder="0" allowfullscreen></iframe>
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= video.youtubeId %>?modestbranding=1&autohide=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="caption">
-      <h3><%= meme.name %></h3>
-      <p><%= meme.description %></p>
+      <h3><%= video.title %></h3>
+      <h4><%= video.artist %></h4>
+      <p><%= video.description %></p>
       <p>
-        <a href="/memes/<%= meme._id %>" class="btn btn-primary" role="button">Show</a>
-        <a href="/memes/<%= meme._id %>/edit" class="btn btn-primary" role="button">Edit</a>
-        <form action="/memes/<%= meme._id %>" method="post">
+        <a href="/videos/<%= video._id %>" class="btn btn-primary" role="button">Show</a>
+        <a href="/videos/<%= video._id %>/edit" class="btn btn-primary" role="button">Edit</a>
+        <form action="/videos/<%= video._id %>" method="post">
           <input type="hidden" value="delete" name="_method">
           <input type="submit" class="btn btn-danger" value="Delete"></input>
         </form>

@@ -1,19 +1,23 @@
 <main class="container">
   <h1>Edit</h1>
-  <form action="/memes/<%= meme._id %>" method="post">
+  <form action="/videos/<%= video._id %>" method="post">
     <input type="hidden" value="put" name="_method">
     <div class="form-group">
-      <label for="exampleInputEmail1">Name</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name" name="meme[name]" value="<%= meme.name %>">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title" name="video[title]" value="<%= video.title %>">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Artist</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title" name="video[artist]" value="<%= video.artist %>">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Description</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Description" name="meme[description]" value="<%= meme.description %>">
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Description" name="video[description]" value="<%= video.description %>">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Youtube Id</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Youtube Id" name="meme[youtubeId]" value="<%= meme.youtubeId %>">
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Youtube Id" name="video[youtubeId]" value="<%= video.youtubeId %>">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default">Update</button>
   </form>
 </main>

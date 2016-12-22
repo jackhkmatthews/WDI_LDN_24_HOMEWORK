@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
-const databaseUrl = 'mongodb://localhost/memeTube';
+const databaseUrl = 'mongodb://localhost/videoTube';
 
 mongoose.connect(databaseUrl, () => console.log(`connected to database at ${databaseUrl}`));
 
@@ -25,7 +25,7 @@ app.use(morgan('dev'));
 app.use(expressLayouts);
 
 //use express static for static files
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(`${__dirname}/public`));
 
 //use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
