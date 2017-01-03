@@ -1,0 +1,17 @@
+//descriptive color variables
+$white              :#fff;
+$grey               :#484747;
+$black              :#000;
+
+
+//functional color variables
+
+$color-prim:           $white;
+
+$color-text-light:     $white;
+$color-text-base:      $grey;
+$color-text-dark:      $black;
+
+//media query brak points
+
+$brk-narrow:          '(min-width: 768px)';

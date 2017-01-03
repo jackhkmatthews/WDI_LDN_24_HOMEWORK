@@ -1,0 +1,58 @@
+<section class="container">
+  <div class="row title-banner">
+    <div class="col-sm-12">
+      <div class="page-header">
+        <h1><%= project.creator.name %>'s project, "<%= project.titles[0].main %>", can be edited and updated below.</h1>
+      </div>
+    </div>
+  </div>
+  <form method="post" action="/projects/<%= project._id %>">
+    <input type="hidden" name="_method" value="put">
+    <div class="form-group form-group form-group col-sm-10 col-sm-offset-1">
+      <input type="text" class="form-control" id="inputTitleMain" value="<%= project.titles[0].main %>" name="project[titles][main]">
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <label for="project_creator">Creator</label>
+      <select class="form-control" id="project-creator" name="project[creator]">
+        <% creators.forEach(creator => { %>
+          <option value="<%= creator._id %>"><%= creator.name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="form-group col-sm-4">
+        <label for="inputColorsTopLeft">Gradient Start</label>
+        <input type="text" class="form-control" id="inputColorsTopLeft" value="<%= project.colors[0].topLeft %>" name="project[colors][topLeft]">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="inputColorsBottomRight">Gradient End</label>
+        <input type="text" class="form-control" id="inputColorsBottomRight" value="<%= project.colors[0].bottomRight %>" name="project[colors][bottomRight]">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="imageUrlsBanner">Banner Image URL</label>
+        <input type="text" class="form-control" id="imageUrlsBanner" value="<%= project.imageUrls[0].banner %>" name="project[imageUrls][banner]">
+      </div>
+    </div>
+    <div class="form-group col-sm-4 col-sm-offset-4">
+      <textarea type="text" class="form-control" id="paragraphsIntro" name="project[paragraphs][intro]"><%= project.paragraphs[0].intro %></textarea>
+    </div>
+    <div class="form-group form-group col-sm-10 col-sm-offset-1">
+      <textarea type="text" class="form-control" id="paragraphsMain" name="project[paragraphs][main]"><%= project.paragraphs[0].main %></textarea>
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsIntro" value="<%= project.imageUrls[0].intro %>" name="project[imageUrls][intro]">
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsMain" value="<%= project.imageUrls[0].main %>" name="project[imageUrls][main]">
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsConcluding" value="<%= project.imageUrls[0].concluding %>" name="project[imageUrls][concluding]">
+    </div>
+    <div class="form-group form-group col-sm-10 col-sm-offset-1">
+      <textarea class="form-control" id="paragraphsConcluding" name="project[paragraphs][concluding]"><%= project.paragraphs[0].concluding %></textarea>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1 btn-column">
+      <button type="submit" class="btn btn-default">Update</button>
+    </div>
+  </form>
+</section>

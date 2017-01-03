@@ -1,0 +1,56 @@
+</div>
+</div>
+<section class="container">
+  <div class="page-header">
+  <h1>Upload a project of your own to be displayed on CollectivePortfolio.</h1>
+</div>
+  <form method="post" action="/projects">
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <input type="text" class="form-control" id="inputTitleMain" placeholder="My Cool Project's Title" name="project[titles][main]">
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <label for="project_creator">User (<a href="/creators/new">Add New User)</a></label>
+      <select class="form-control" id="project-creator" name="project[creator]">
+        <% console.log(creators[0]._id); %>
+        <% creators.forEach(creator => { %>
+          <option value="<%= creator._id %>"><%= creator.name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="form-group col-sm-4">
+        <label for="inputColorsTopLeft">Gradient Start</label>
+        <input type="text" class="form-control" id="inputColorsTopLeft" placeholder="190, 147, 197" name="project[colors][topLeft]">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="inputColorsBottomRight">Gradient End</label>
+        <input type="text" class="form-control" id="inputColorsBottomRight" placeholder="123, 198, 204" name="project[colors][bottomRight]">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="imageUrlsBanner">Banner Image URL</label>
+        <input type="text" class="form-control" id="imageUrlsBanner" placeholder="http://www.Your-Banner-Image-URL.com/high-resolution-image.jpg" name="project[imageUrls][banner]">
+      </div>
+    </div>
+    <div class="form-group col-sm-4 col-sm-offset-4">
+      <textarea type="text" class="form-control" id="paragraphsIntro" name="project[paragraphs][intro]">Introduction text. To be placed underneath the project banner.  A few lines at most.</textarea>
+    </div>
+    <div class="form-group form-group col-sm-10 col-sm-offset-1">
+      <textarea type="text" class="form-control" id="paragraphsMain" name="project[paragraphs][main]">The main paragraph.  Placed full width underneath the intro text.  The bulk of your project should be outlined here.  Brief description of the images which will follow can also be included here.</textarea>
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsIntro" placeholder="http://www.Your-First-Image-URL.com/high-resolution-image.jpg" name="project[imageUrls][intro]">
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsMain" placeholder="http://www.Your-Second-Image-URL.com/high-resolution-image.jpg" name="project[imageUrls][main]">
+    </div>
+    <div class="form-group col-sm-12">
+      <input type="text" class="form-control" id="imageUrlsConcluding" placeholder="http://www.Your-Third-Image-URL.com/high-resolution-image.jpg" name="project[imageUrls][concluding]">
+    </div>
+    <div class="form-group form-group col-sm-10 col-sm-offset-1">
+      <textarea class="form-control" id="paragraphsConcluding" name="project[paragraphs][concluding]">The concluding paragraph. Text will displayed at the bottom of your project page. Perfect place to state what you learned from completing the project and things you would like to add in the future. Contact details can also be included.</textarea>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1 btn-column">
+      <button type="submit" class="btn btn-default">Create</button>
+    </div>
+  </form>
+</section>

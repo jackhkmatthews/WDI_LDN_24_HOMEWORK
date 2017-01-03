@@ -1,0 +1,141 @@
+body {
+  color: $color-text-base
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 30px;
+    padding-bottom: 0px;
+  }
+}
+
+.jumbotron {
+    margin-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.page-header {
+    margin-top: 0;
+}
+
+.page-header h1 {
+    margin-top: 0;
+    color: $color-text-base;
+    min-height: 78px;
+}
+
+nav.navbar.navbar-default {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+a.navbar-brand {
+    padding-left: 0px;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: $color-text-base;
+    text-decoration: underline;
+}
+
+.navbar-default .navbar-brand {
+    color: $color-text-base;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: $color-text-base;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    text-decoration: underline;
+    color: $color-text-base;
+}
+
+.project-box {
+    padding: 0;
+}
+
+.project-row {
+    padding: 0px 15px;
+}
+
+.project-box a {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    color: white;
+    background-size: cover;
+}
+
+footer {
+    padding: 30px 0;
+}
+
+a {
+    color: $color-text-base;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {color: $color-text-base;text-decoration: underline;background-color: rgba(0, 0, 0, 0);}
+
+a.thumbnail:hover {
+    text-decoration: none;
+}
+
+.form-control {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn-column {
+    text-align: center;
+}
+
+.jumbotron.project {
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    text-align: center;
+}
+
+.jumbotron.project h1 {
+    margin-top: 30vh;
+}
+
+.jumbotron.project .glyphicon {
+    color: white;
+    font-size: 2em;
+}
+
+.project section h1 {
+    text-align: center;
+    padding-top: 5vh;
+    line-height: 1.5em;
+}
+
+.project p.paragraph {
+    line-height: 1.5em;
+    padding: 3vh 0;
+}
+
+.image-container {
+    padding: 4vh 0;
+}
+
+form.delete {
+    display: inline;
+}
+
+.row.buttons {
+    text-align: center;
+}
+
+a.selected {
+  text-decoration: underline;
+}
+
+.row.buttons.creator {
+    padding-top: 30px;
+}

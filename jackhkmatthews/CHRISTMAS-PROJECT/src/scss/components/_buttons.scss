@@ -1,0 +1,14 @@
+.btn {
+    border-radius: 0px;
+}
+
+.btn-column {
+    text-align: center;
+}
+
+.row.buttons {
+    text-align: center;
+    &.creator {
+        padding-top: 30px;
+    }
+}

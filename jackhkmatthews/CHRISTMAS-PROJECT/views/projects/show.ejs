@@ -1,0 +1,43 @@
+<section class="container">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-header" id="intro">
+          <h1><%= project.paragraphs[0].intro %></h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <p class="paragraph main">
+          <%= project.paragraphs[0].main %>
+        </p>
+      </div>
+    </div>
+    <div class="image-container">
+      <img src="<%= project.imageUrls[0].intro %>" class="img-responsive" alt="">
+    </div>
+    <div class="image-container">
+      <img src="<%= project.imageUrls[0].main %>" class="img-responsive" alt="">
+    </div>
+    <div class="image-container">
+      <img src="<%= project.imageUrls[0].concluding %>" class="img-responsive" alt="">
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <p class="paragraph concluding">
+          <%= project.paragraphs[0].concluding %>
+          <br><br>
+          - <%= project.creator.name %>
+        </p>
+      </div>
+    </div>
+    <div class="row buttons">
+      <a class="btn btn-default" href="/projects/<%= project._id %>/edit" role="button">Edit</a>
+      <form action="/projects/<%= project._id %>" method="post" class="delete">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+</section>

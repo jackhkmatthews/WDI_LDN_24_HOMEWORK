@@ -1,0 +1,48 @@
+.navbar-default  {
+  border: none;
+  background-color: rgba( 0, 0, 0,      0);
+  .navbar-nav li a {
+    color: $color-text-base;
+  };
+  .navbar-brand {
+    padding-left: 0px;
+    color: $color-text-base;
+    &:focus{
+      color: $color-text-base;
+      text-decoration: underline;
+    }
+    &:hover {
+      color: $color-text-base;
+      text-decoration: underline;
+    }
+  }
+}
+
+.nav>li>a {
+  &:hover {
+    text-decoration: underline;
+    color: $color-text-base;
+    background-color: rgba(0, 0, 0, 0)
+  }
+  &:focus {
+    text-decoration: underline;
+    color: $color-text-base;
+    background-color: rgba(0, 0, 0, 0)
+  }
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+  &:hover {
+    background: none;
+  }
+  &:focus {
+    background: none;
+  }
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border: none;
+    text-align: left;
+}

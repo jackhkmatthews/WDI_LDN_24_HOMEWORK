@@ -1,0 +1,18 @@
+.jumbotron {
+  margin-bottom: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  @media #{$brk-narrow} {
+    padding-top: 30px;
+    padding-bottom: 0px;
+  }
+}
+
+.jumbotron.project {
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  text-align: center;
+  h1 {
+    margin-top: 30vh;
+  }
+}

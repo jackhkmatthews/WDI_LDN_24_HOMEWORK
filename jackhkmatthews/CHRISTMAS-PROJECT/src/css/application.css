@@ -1,0 +1,122 @@
+body {
+  color: #484747; }
+
+a {
+  color: #484747; }
+
+.image-container {
+  padding: 4vh 0; }
+
+footer {
+  padding: 30px 0; }
+
+.btn {
+  border-radius: 0px; }
+
+.btn-column {
+  text-align: center; }
+
+.row.buttons {
+  text-align: center; }
+  .row.buttons.creator {
+    padding-top: 30px; }
+
+.glyphicon {
+  color: white;
+  font-size: 2em; }
+
+.project section h1 {
+  text-align: center;
+  padding-top: 5vh;
+  line-height: 1.5em; }
+
+.project p.paragraph {
+  line-height: 1.5em;
+  padding: 3vh 0; }
+
+a.selected {
+  text-decoration: underline; }
+
+.project-box a {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  color: white;
+  background-size: cover;
+  padding: 4px 4px 4px 22px; }
+
+a.thumbnail:hover {
+  text-decoration: none; }
+
+.project-box {
+  padding: 0; }
+
+.project-row {
+  padding: 0px 15px; }
+
+form.delete {
+  display: inline; }
+
+.form-control {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px; }
+
+.jumbotron {
+  margin-bottom: 0px;
+  background-color: transparent; }
+  @media (min-width: 768px) {
+    .jumbotron {
+      padding-top: 30px;
+      padding-bottom: 0px; } }
+
+.jumbotron.project {
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  text-align: center; }
+  .jumbotron.project h1 {
+    margin-top: 30vh; }
+
+.page-header {
+  margin-top: 0; }
+  .page-header h1 {
+    margin-top: 0;
+    color: #484747;
+    min-height: 78px; }
+
+.navbar-default {
+  border: none;
+  background-color: transparent; }
+  .navbar-default .navbar-nav li a {
+    color: #484747; }
+  .navbar-default .navbar-brand {
+    padding-left: 0px;
+    color: #484747; }
+    .navbar-default .navbar-brand:focus {
+      color: #484747;
+      text-decoration: underline; }
+    .navbar-default .navbar-brand:hover {
+      color: #484747;
+      text-decoration: underline; }
+
+.nav > li > a:hover {
+  text-decoration: underline;
+  color: #484747;
+  background-color: transparent; }
+.nav > li > a:focus {
+  text-decoration: underline;
+  color: #484747;
+  background-color: transparent; }
+
+.navbar-default .navbar-toggle {
+  border: none; }
+  .navbar-default .navbar-toggle:hover {
+    background: none; }
+  .navbar-default .navbar-toggle:focus {
+    background: none; }
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border: none;
+  text-align: left; }
+
+/*# sourceMappingURL=application.css.map */

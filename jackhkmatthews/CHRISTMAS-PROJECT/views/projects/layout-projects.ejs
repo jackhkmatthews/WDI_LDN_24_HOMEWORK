@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%- include ../partials/_head %>
+  <body>
+    <div class="jumbotron project" style="
+    background-image: linear-gradient(to left, rgba(<%= project.colors[0].topLeft %>, 0.3), rgba(<%= project.colors[0].bottomRight %>, 0.9)), url(<%= project.imageUrls[0].banner %>);">
+      <div class="container">
+        <%- include ../partials/_header %>
+        <h1><%= project.titles[0].main %></h1>
+        <h3><a href="/creators/<%= project.creator._id %>" style="color: white"><%= project.creator.name %></a></h3>
+        <a href="#intro"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a>
+      </div>
+    </div>
+    <main class="project">
+      <%- body %>
+    </main>
+    <%- include ../partials/_footer %>
+  </body>
+</html>

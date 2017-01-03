@@ -1,0 +1,20 @@
+{
+  "name": "wdi_christmas_project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "jackhkmatthews <jackhkmatthews@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jackhkmatthews/WDI_CHRITSMAS_PROJECT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

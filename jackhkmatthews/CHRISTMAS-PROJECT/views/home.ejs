@@ -1,0 +1,26 @@
+<section class="container">
+  <div class="row title-banner">
+    <div class="col-sm-12">
+      <div class="page-header">
+        <h1>CollectivePortfolio is a place for user submited projects to be displayed.</h1>
+      </div>
+    </div>
+  </div>
+  <% projects.forEach(function(project, i, projects){ %>
+    <% if (i === 0 || i % 2 === 0) { %>
+      <div class="row project-row">
+    <% } %>
+    <div class="col-xs-12 col-sm-6 project-box">
+      <a href="/projects/<%= project._id %>" class="thumbnail" style="
+      background-image: linear-gradient(to left, rgba(<%= project.colors[0].topLeft %>, 0.3), rgba(<%= project.colors[0].bottomRight %>, 0.9)), url(<%= project.imageUrls[0].banner %>);">
+        <div style="height: 300px; width: 300px">
+          <h3 class="title"><%= project.titles[0].main %></h3>
+          <h4><%= project.creator.name %></h4>
+        </div>
+      </a>
+    </div>
+    <% if ((i+1) % 2 === 0 || i === projects.length-1) { %>
+      </div>
+    <% } %>
+  <% }) %>
+</section>
