@@ -26,13 +26,19 @@ function usersIndex() {
   }).done(data => {
     $('main').html('<div class="users"></div>');
     $.each(data, (index, user) => {
-      $('.users').prepend(`<div class='user-tile'>
-      <img src='${user.image}'>
-      <a class='usersShow' href="/users/${user._id}">
-        <h2>${user.name}</h2>
-      </a>
-      <p>${user.bio}</p>
-    </div>`);
+      $('.users').prepend(`
+        <div class="col-xs-12 col-sm-4 project-box">
+          <div class="thumbnail">
+            <a href="/users/${user._id}" class="usersShow">
+              <img src="${user.image}" style="max-height: 200px">
+            </a>
+            <div class="caption">
+              <h3 class="title">${user.name}</h3>
+              <p>${user.bio}</p>
+            </div>
+          </div>
+        </div>
+    `);
     });
   });
 }
