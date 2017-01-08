@@ -12,7 +12,7 @@ function autheticationsRegister(req, res) {
     //sign(data to be included in token,
     //      secret to be user to encoded and hence verify signature,
     //      expiry time)
-    const token = jwt.sign(user._id, config.secret, {expiresIn: 60*5});
+    const token = jwt.sign(user._id, config.secret, {expiresIn: 60*60*24});
 
     return res.status(200).json({
       message: 'user registered!',
@@ -31,7 +31,7 @@ function authenticationsLogin(req, res){
     //comparing passwords, if dont match do this
     console.log(user.validatePassword);
     if (!user.validatePassword(req.body.password)) return res.status(404).json({
-      message: 'passord doesnt match'
+      message: 'password doesnt match'
     });
 
     //if do match drop a token and send user profile back
