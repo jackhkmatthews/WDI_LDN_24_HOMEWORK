@@ -29,7 +29,8 @@ function authenticationsLogin(req, res){
     if (!user) return res.status(404).json({message: 'email not registered'});
 
     //comparing passwords, if dont match do this
-    if (user.password !== req.body.password ) return res.status(404).json({
+    console.log(user.validatePassword);
+    if (!user.validatePassword(req.body.password)) return res.status(404).json({
       message: 'passord doesnt match'
     });
 
