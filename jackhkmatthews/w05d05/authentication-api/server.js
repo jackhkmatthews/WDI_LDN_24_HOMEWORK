@@ -3,13 +3,16 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/config');
-const router = require('./config/routes');
+const apiRouter = require('./config/api-routes');
+const webRouter = require('./config/web-routes');
 const expressJWT = require('express-jwt');
 // const User = require('./models/user');
 
 // User.collection.drop();
 
 const app = express();
+
+//////////////////////user api////////////////////////////////////////
 
 mongoose.connect(config.db, () => console.log(`connected to ${config.db}`));
 
@@ -36,6 +39,11 @@ function jwtErrorHandler(err, req, res, next){
   return res.status(401).json({ message: 'Unauthorized request.' });
 }
 
-app.use('/api', router);
+app.use('/api', apiRouter);
+
+//////////////////////web api////////////////////////////////////////
+
+app.use(express.static(`${__dirname}/public`));
+app.use('/', webRouter);
 
 app.listen(config.port, () => console.log(`express listening at port ${config.port}`));
