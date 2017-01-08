@@ -11,18 +11,19 @@ const userSchema = new mongoose.Schema({
 
 //when registering, the post request will include a password field
 //this password field is not included in the Schema
-//normally is would be ignored
+//normally is would be rejected
 //we will make mongoose listen for this field
 //save it in a virtual field to be compared against passwordConfirmation
 //hash it and save it in the passwordHash field
 
 userSchema
-  .virtual('password')
-  .set(setPassword);
+  .virtual('password') //let password field in as a virtual, otherwise rejected
+  .set(setPassword); //set = run before 'setting' to db
 
 //value = password field
 function setPassword(password){
-  this._password = password;
+  this._password = password; //_password is an new actual field which will then
+  //be rejected before 'set', just like the original password field
   this.passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(8));
 }
 
@@ -41,21 +42,23 @@ function setPasswordConfirmation(value){
 //will listen for path passwordHash and validate plain password in virtual field
 //against passwordConfirmation also stored in virtual field
 userSchema
+  //whenever passwordHash present (path relates to fields listed in the Schema)
   .path('passwordHash')
-  .validate(validatePasswordHash);
+  //run validate(another mongoose function)
+  .validate(validatePasswordHash, 'error, something went wrong');
 
 
 //compare validate the password hashes by comparision
 function validatePasswordHash(){
   //if its a new document
   if(this.isNew){
-    //if the document has not submitted a password which has then not been
-    //stored in the docs virtual field
     if (!this._password) {
       return this.invalidate('password', 'a password is required');
     }
     if (this._password !== this._passwordConfirmation) {
       return this.invalidate('passwordConfirmation', 'passwords must match');
+      //this.invalidate = mongoose function for handling invalidation, allows
+      //different error messages for each case
     }
   }
 }
