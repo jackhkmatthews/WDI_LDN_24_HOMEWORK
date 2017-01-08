@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const users = require('../controllers/users');
+const authentications = require('../controllers/authentications');
 
 
 ////////////users////////////
@@ -10,6 +11,14 @@ const users = require('../controllers/users');
 router.route('/users')
   .post(users.new)
   .get(users.index);
+
+//register
+router.route('/users/register')
+  .post(authentications.register);
+
+//login
+router.route('/users/login')
+  .post(authentications.login);
 
 //show and delete and update
 router.route('/users/:id')
