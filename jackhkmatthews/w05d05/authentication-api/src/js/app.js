@@ -3,7 +3,7 @@ console.log('js loaded');
 function App() {
 
   this.apiUrl = 'http://localhost:3000/api';
-  this.numbers = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+  this.numbers = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven'];
 
   this.init = function init(){
     this.$main = $('main');
@@ -14,6 +14,8 @@ function App() {
     $('.usersIndex').on('click', this.usersIndex.bind(this));
     $('.logout').on('click', this.logout.bind(this));
     $('.register').on('click', this.register.bind(this));
+    $('.landingPage').on('click', this.landingPage.bind(this));
+    $('.usersDelete').on('click', this.usersDelete.bind(this));
     if(this.getToken()){
       this.loggedInState();
     } else {
@@ -25,7 +27,8 @@ function App() {
     this.$main.html('');
   };
 
-  this.landingPage = function landingPage(){
+  this.landingPage = function landingPage(e){
+    if (e) e.preventDefault;
     console.log('hi');
     this.$main.html(`
       <div class="jumbotron">
@@ -41,30 +44,49 @@ function App() {
 
     this.ajaxRequest(url, 'get', null, data => {
       this.clearMain();
-      this.$main.html('<div id="accordion" role="tablist" aria-multiselectable="true" class="usersAccordian container"></div>');
+      this.$main.html(`
+        <div id="accordion" role="tablist" aria-multiselectable="true" class=" container">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col align-self-center usersAccordian"></div>
+            <div class="col"></div>
+          </div>
+        </div>`);
       const $usersAccordian = $('.usersAccordian');
       $.each(data.users, (i, user) => {
         $usersAccordian.append(`
           <div class="card">
-            <div class="card-header" role="tab" id="heading${this.numbers[i]}">
+            <div class="card-header" role="tab" id="heading${i}">
               <h5 class="mb-0">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse${this.numbers[i]}" aria-expanded="false" aria-controls="collapse${this.numbers[i]}">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse${i}" aria-expanded="false" aria-controls="collapse${i}">
                   ${user.username}
                 </a>
               </h5>
             </div>
 
-            <div id="collapse${this.numbers[i]}" class="collapse" role="tabpanel" aria-labelledby="heading${this.numbers[i]}">
+            <div id="collapse${i}" class="collapse" role="tabpanel" aria-labelledby="heading${i}">
               <div class="card-block">
                 <p>${user.firstName}</p>
                 <p>${user.lastName}</p>
                 <p>${user.email}</p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-secondary usersEdit" data-id="${user._id}">Edit</button>
+                  <button type="button" class="btn btn-danger usersDelete" data-id="${user._id}">Delete</button>
+                </div>
               </div>
             </div>
           </div>
         `);
       });
     });
+  };
+
+  this.usersDelete = function usersDelete(e){
+    e.preventDefault();
+
+    const url = `${this.apiUrl}/users/${$(e.target).attr('data-id')}`;
+
+    this.ajaxRequest(url, 'get', null, this.usersIndex());
   };
 
   this.logout = function logout(){
@@ -90,6 +112,7 @@ function App() {
 
     this.ajaxRequest(url, method, data, data => {
       if (data.token) this.setToken(data.token);
+      if ($('.modal').hasClass('show')) $('.modal').modal('hide');
       this.loggedInState();
     });
 

@@ -25,7 +25,10 @@ app.use(cors());
 
 //need to check for token before allowing requests to the api
 //pass secret and specify urls to be ignored
+//could type manually with if statments on header of requests
 app.use('/api', expressJWT({ secret: config.secret})
+  //unless if part of expressJWT but can be required seperately to allow
+  //filtering of other middleware
   .unless({
     path: [
       {url: '/api/users/login', method: ['POST']},
@@ -33,7 +36,7 @@ app.use('/api', expressJWT({ secret: config.secret})
     ]
   }));
 
-//handling the errors
+//handling the errors with custom middleware function
 app.use(jwtErrorHandler);
 
 function jwtErrorHandler(err, req, res, next){
