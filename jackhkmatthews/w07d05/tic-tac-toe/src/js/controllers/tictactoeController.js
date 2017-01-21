@@ -6,6 +6,7 @@ TictactoeController.$inject = [];
 function TictactoeController(){
   const vm = this;
 
+  vm.landing = true;
   vm.cells = [
     {
       index: 0,
@@ -134,6 +135,62 @@ function TictactoeController(){
 
   function reset(){
     vm.winner = null;
+    vm.cells = [
+      {
+        index: 0,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 1,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 2,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 3,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 4,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 5,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 6,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 7,
+        played: false,
+        text: '.',
+        player: null
+      },
+      {
+        index: 8,
+        played: false,
+        text: '.',
+        player: null
+      }
+    ];
   }
 
 }

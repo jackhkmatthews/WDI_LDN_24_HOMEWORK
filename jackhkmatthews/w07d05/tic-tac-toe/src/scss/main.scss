@@ -1,6 +1,28 @@
+/***********variables*******************/
+
+$main-black: #222222;
+$neon-green: #18DD00;
+$neon-yellow: #E1C829;
+$neon-blue: #2FB5F3;
+$neon-pink: #FC82C3;
+
+$board-width: 390px;
+$button-height: 30px;
+
+@font-face {
+  font-family: 'London Tube';
+  src: url('/fonts/London-Tube.ttf');
+}
+
+
+/***********generic styles*******************/
+
 body {
-  background-color: #6A6;
+  background-color: $main-black;
   color: #fff;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 10%;
+  text-transform: uppercase;
 }
 
 ul {
@@ -9,54 +31,175 @@ ul {
     padding: 0;
 }
 
-main {
-    width: 80%;
+/***********player markers********************/
+
+.player-o-selector {
+  border: 0px solid $neon-pink;
+  background-image: repeating-linear-gradient(315deg, transparent, transparent 2px, $neon-pink 2px, $neon-pink 4px);
+}
+
+.player-x-selector {
+  border: 0px solid $neon-green;
+  background-image: repeating-linear-gradient(315deg, transparent, transparent 2px, $neon-green 2px, $neon-green 4px);
+}
+
+/***********Landing Page**********************/
+
+.landing-page-container {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.player-container {
+    width: 200px;
     margin: 0 auto;
 }
 
-main li {
+.player-container h1 {
     float: left;
-    width: 33%;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
     box-sizing: border-box;
-    border: 1px solid black;
 }
 
-.container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    /* height: 100%; */
-}
-.dummy {
-    margin-top: 100%; /* 4:3 aspect ratio */
-}
-.element {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.play-button {
+  background-image: repeating-linear-gradient(315deg,transparent,transparent 2px,#4a4a4a 2px,#4a4a4a 4px);
+  width: 100px;
+  margin: 0 auto;
+  height: $button-height;
+  line-height: $button-height;
 }
 
-header nav ul li {
-    float: right;
-    padding: 20px;
+.fa-long-arrow-up {
+  font-size: 19px;
+  padding: 15px 0px 0px 0px;
 }
 
-nav {
-    height: 70px;
-    width: 100%;
+.landing-page-container p {
+  margin: 0;
 }
+
+/***********Icons*****************************/
+
+/***********Header****************************/
+
+header {
+    padding: 20px 0px;
+    height: $button-height;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin: 20px 0 20px 0;
+}
+
+.turn-container {
+  margin: 0 auto;
+  width: $board-width;
+}
+
+.turn-container ul li {
+    float: left;
+    width: $board-width / 3;
+    height: $button-height;
+    text-align: center;
+    line-height: $button-height;
+    box-sizing: border-box;
+}
+
+.turn-container .reset {
+  border: 1px solid #fff;
+}
+
+/***********Board*****************************/
+
+main {
+    margin-bottom: 20px;
+}
+
+ul.board {
+    width: $board-width;
+    height: $board-width;
+    margin: 0 auto;
+}
+
+/***********Cells*****************************/
+
+li.cell {
+    float: left;
+    width: $board-width / 3;
+    height: $board-width / 3;
+    box-sizing: border-box;
+    line-height: $board-width / 3;
+    text-align: center;
+}
+
+.cell3, .cell4, .cell5 {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.cell1, .cell4, .cell7 {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+/***********Modes****************************/
+
+aside.game-modes {
+    clear: both;
+    padding: 20px 0;
+    height: $button-height;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin: 0 0 10px 0;
+}
+
+.game-modes-container {
+  width: $board-width;
+  margin: 0 auto;
+}
+
+aside.game-modes ul li {
+  float: left;
+  width: $board-width / 3;
+  height: $button-height;
+  text-align: center;
+  line-height: $button-height;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+}
+
+/***********Footer****************************/
 
 .footer-wrap {
-    height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
 }
 
 footer {
-    height: 50px;
+  height: $button-height;
 }
 
 footer ul li {
-    float: left;
-    padding: 0px 20px;
+  float: left;
+  line-height: $button-height;
+  padding: 0 12px;
 }
+
+/**********media queries**********************/
+
+
+/**********clearfix***************************/
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

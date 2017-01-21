@@ -22,7 +22,7 @@ gulp.task('html', () => {
     .pipe(gulp.dest('public/html'));
 });
 
-// gulp.task('fonts', () => {
+// gulp.task('icons', () => {
 //   return gulp.src('src/fonts/**/*.{eot,svg,ttf,woff,woff2}')
 //     .pipe(gulp.dest('public/fonts'))
 //     .pipe(browserSync.stream());

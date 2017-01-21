@@ -1,0 +1,29 @@
+<header>
+  <div class="turn-container clearfix">
+    <ul class="clearfix">
+      <li ng-if="true" class="player-x-selector">x</li>
+      <li ng-if="flase"></li>
+      <li>Reset</li>
+      <li ng-if="true" class="player-o-selector"><i class="fa fa-circle-thin" aria-hidden="true"></i></li>
+      <li ng-if="flase"></li>
+    </ul>
+  </div>
+</header>
+<main class="clearfix">
+  <div class="board-container clearfix">
+    <ul class="board clearfix">
+      <li class="cell cell{{cell.index}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)">
+        {{ cell.text }}
+      </li>
+    </ul>
+  </div>
+</main>
+<aside class="game-modes">
+  <div class="game-modes-container">
+    <ul class="clearfix">
+      <li>2 Player</li>
+      <li>Comp</li>
+      <li>Comp</li>
+    </ul>
+  </div>
+</aside>
