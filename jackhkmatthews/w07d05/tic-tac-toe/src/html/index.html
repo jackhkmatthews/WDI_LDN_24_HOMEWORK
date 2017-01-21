@@ -14,97 +14,27 @@
     <header>
       <nav>
         <ul>
-          <li>{{game.test}} Easy</li>
+          <li>Easy</li>
           <li>Hard</li>
           <li>2 Player</li>
         </ul>
       </nav>
     </header>
     <main>
+      <h1 ng-if="game.winner">Player {{game.winner}} wins!</h1>
       <ul class="board">
-        <li class="cell">
+        <li class="cell cell{{cell.index}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)">
           <div class="container">
             <div class="dummy">
               <div class="element">
-                0
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                1
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                2
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                3
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                4
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                5
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                6
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                7
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="cell">
-          <div class="container">
-            <div class="dummy">
-              <div class="element">
-                8
+                {{ cell.text }}
               </div>
             </div>
           </div>
         </li>
       </ul>
-      <h1>O's turn</h1>
+      <h1>X is next: {{game.xIsNext}}</h1>
+      <h1 ng-click="game.reset()">Reset</h1>
     </main>
   </div>
   <footer>
