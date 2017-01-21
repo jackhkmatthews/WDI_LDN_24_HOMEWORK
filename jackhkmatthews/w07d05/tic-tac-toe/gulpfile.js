@@ -31,6 +31,6 @@ gulp.task('html', () => {
 gulp.task('default', ['sass', 'es6', 'html'], () => {
   gulp.watch('src/scss/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['es6']);
-  gulp.watch('src/html/**/*.html}', ['html']);
+  gulp.watch('src/html/**/*.html', ['html']);
   gulp.watch('**/*.html', browserSync.reload);
 });
