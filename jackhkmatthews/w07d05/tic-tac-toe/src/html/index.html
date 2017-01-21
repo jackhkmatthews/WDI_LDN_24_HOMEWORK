@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="/css/master.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Tic Tac Toe</title>
+  <script src="../../bower_components/angular/angular.js"></script>
+  <script src="../js/app.js" charset="utf-8"></script>
+  <script src="../js/controllers/tictactoeController.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="footer-wrap">
     <header>
       <nav>
         <ul>
@@ -16,24 +21,98 @@
       </nav>
     </header>
     <main>
-      <ul>
-        <li>0</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+      <ul class="board">
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                0
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                1
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                2
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                3
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                4
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                5
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                6
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                7
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="cell">
+          <div class="container">
+            <div class="dummy">
+              <div class="element">
+                8
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
+      <h1>O's turn</h1>
     </main>
-    <footer>
-      <ul>
-        <li>LinkedIn</li>
-        <li>GitHub</li>
-        <li>Email</li>
-      </ul>
-    </footer>
-  </body>
+  </div>
+  <footer>
+    <ul>
+      <li>LinkedIn</li>
+      <li>GitHub</li>
+      <li>Email</li>
+    </ul>
+  </footer>
+</body>
 </html>
