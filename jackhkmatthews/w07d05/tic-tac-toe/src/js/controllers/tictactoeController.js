@@ -11,56 +11,65 @@ function TictactoeController(){
     {
       index: 0,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 1,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 2,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 3,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 4,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 5,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 6,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 7,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     },
     {
       index: 8,
       played: false,
-      text: '.',
-      player: null
+      html: '.',
+      player: null,
+      winner: null
     }
   ];
   vm.winningBoxCombinations = [
@@ -78,19 +87,14 @@ function TictactoeController(){
   vm.xIsNext = true;
   vm.winner = null;
 
-  vm.log = log;
   vm.move = move;
   vm.addToPlayersMoves = addToPlayersMoves;
   vm.updateBoard = updateBoard;
   vm.checkForWinner = checkForWinner;
+  vm.attributeWinningClass = attributeWinningClass;
   vm.reset = reset;
 
-  function log(){
-    console.log('TictactoeController');
-  }
-
   function move(cell){
-    console.log(cell);
     if(!cell.played && !vm.winner){
       vm.addToPlayersMoves(cell);
       vm.updateBoard(cell);
@@ -105,11 +109,11 @@ function TictactoeController(){
 
   function updateBoard(cell){
     if(vm.xIsNext) {
-      cell.text = 'x';
+      cell.html = 'x';
       cell.player = 'x';
     }
     if(!vm.xIsNext) {
-      cell.text = 'o';
+      cell.html = '<i class="fa fa-circle-thin" aria-hidden="true"></i>';
       cell.player = 'o';
     }
     cell.played = true;
@@ -122,73 +126,91 @@ function TictactoeController(){
       const box1 = element[1];
       const box2 = element[2];
       if (vm.playerOCells.includes(box0) && vm.playerOCells.includes(box1) && vm.playerOCells.includes(box2)){
+        vm.attributeWinningClass(box0, box1, box2, 'O');
         vm.winner = 'O';
         console.log('player O wins');
       }
       if (vm.playerXCells.includes(box0) && vm.playerXCells.includes(box1) && vm.playerXCells.includes(box2)){
+        vm.attributeWinningClass(box0, box1, box2);
         vm.winner = 'X';
         console.log('player X wins');
       }
-      console.log('no winner');
     });
+  }
+
+  function attributeWinningClass(box0, box1, box2){
+    vm.cells[box0].winner = 'winner';
+    vm.cells[box1].winner = 'winner';
+    vm.cells[box2].winner = 'winner';
   }
 
   function reset(){
     vm.winner = null;
+    vm.playerXCells = [];
+    vm.playerOCells = [];
     vm.cells = [
       {
         index: 0,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 1,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 2,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 3,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 4,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 5,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 6,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 7,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       },
       {
         index: 8,
         played: false,
-        text: '.',
-        player: null
+        html: '.',
+        player: null,
+        winner: null
       }
     ];
   }

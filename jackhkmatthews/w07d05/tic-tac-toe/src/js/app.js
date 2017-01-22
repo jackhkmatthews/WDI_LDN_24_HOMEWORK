@@ -1,4 +1,4 @@
 console.log('js loaded');
 
 angular
-  .module('tictactoeApp', []);
+  .module('tictactoeApp', ['ngSanitize']);

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Tic Tac Toe</title>
   <script src="../../bower_components/angular/angular.js"></script>
+  <script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="../js/app.js" charset="utf-8"></script>
   <script src="../js/controllers/TictactoeController.js" charset="utf-8"></script>
   <link rel="stylesheet" href="../css/normalize.css">
@@ -15,8 +16,8 @@
   <div class="footer-wrap">
     <div class="landing-page-container" ng-if="game.landing">
       <div class="player-container clearfix">
-        <h1 class="player-o-selector"><i class="fa fa-circle-thin" aria-hidden="true"></i></h1>
         <h1 class="player-x-selector">X</h1>
+        <h1 class="player-o-selector"><i class="fa fa-circle-thin" aria-hidden="true"></i></h1>
       </div>
       <h2>Tic Tac Toe</h2>
       <h3 class="play-button" ng-click="game.landing = false"><i class="fa fa-play" aria-hidden="true"></i></h3>
@@ -38,8 +39,7 @@
       <main class="clearfix">
         <div class="board-container clearfix">
           <ul class="board clearfix">
-            <li class="cell cell{{cell.index}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)">
-              {{ cell.text }}
+            <li class="cell cell{{cell.index}} {{cell.player}} {{cell.winner}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)" ng-bind-html="cell.html">
             </li>
           </ul>
         </div>
@@ -47,9 +47,9 @@
       <aside class="game-modes">
         <div class="game-modes-container">
           <ul class="clearfix">
-            <li>2 Player</li>
+            <li class="left">2 Player</li>
             <li>Comp</li>
-            <li>Comp</li>
+            <li class="right">Comp</li>
           </ul>
         </div>
       </aside>
@@ -57,7 +57,7 @@
   </div>
   <footer>
     <ul class="clearfix">
-      <li>Linked</li>
+      <li>LinkedIn</li>
       <li>Email</li>
       <li>GitHub</li>
     </ul>

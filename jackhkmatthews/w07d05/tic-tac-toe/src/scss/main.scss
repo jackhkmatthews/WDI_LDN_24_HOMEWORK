@@ -6,8 +6,32 @@ $neon-yellow: #E1C829;
 $neon-blue: #2FB5F3;
 $neon-pink: #FC82C3;
 
+$text-white: #fff;
+$line-grey: #9c9c9c;
+
 $board-width: 390px;
 $button-height: 30px;
+
+
+
+/***********animations************************/
+
+@keyframes xwinner {
+    0%, 100%   {color: $text-white;}
+    25%  {color: $neon-green;}
+    75%  {color: $neon-green;}
+}
+
+@keyframes owinner {
+  0%, 100%   {color: $text-white;}
+  25%  {color: $neon-pink;}
+  75%  {color: $neon-pink;}
+}
+
+
+
+
+/***********font families*********************/
 
 @font-face {
   font-family: 'London Tube';
@@ -19,10 +43,11 @@ $button-height: 30px;
 
 body {
   background-color: $main-black;
-  color: #fff;
+  color: $text-white;
   font-family: 'Roboto', sans-serif;
   padding: 0 10%;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 ul {
@@ -61,6 +86,11 @@ ul {
     height: 100px;
     line-height: 100px;
     box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.landing-page-container h2 {
+    margin: 0 0 20px 0;
 }
 
 .play-button {
@@ -72,8 +102,8 @@ ul {
 }
 
 .fa-long-arrow-up {
-  font-size: 19px;
-  padding: 15px 0px 0px 0px;
+    font-size: 19px;
+    padding: 20px 0 0px;
 }
 
 .landing-page-container p {
@@ -82,14 +112,20 @@ ul {
 
 /***********Icons*****************************/
 
+/***********Board*****************************/
+
+.board-page-container {
+    padding: 20px 0 0 0;
+}
+
 /***********Header****************************/
 
 header {
     padding: 20px 0px;
     height: $button-height;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    margin: 20px 0 20px 0;
+    border-top: 1px solid $line-grey;
+    border-bottom: 1px solid $line-grey;
+    margin: 0px 0 20px 0;
 }
 
 .turn-container {
@@ -107,7 +143,7 @@ header {
 }
 
 .turn-container .reset {
-  border: 1px solid #fff;
+  border: 1px solid $line-grey;
 }
 
 /***********Board*****************************/
@@ -131,16 +167,31 @@ li.cell {
     box-sizing: border-box;
     line-height: $board-width / 3;
     text-align: center;
+    font-weight: bold;
 }
 
 .cell3, .cell4, .cell5 {
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    border-top: 1px solid $line-grey;
+    border-bottom: 1px solid $line-grey;
 }
 
 .cell1, .cell4, .cell7 {
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-left: 1px solid $line-grey;
+    border-right: 1px solid $line-grey;
+}
+
+.cell.x.winner {
+  color: $neon-green;
+  animation-name: xwinner;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.cell.o.winner {
+  color: $neon-pink;
+  animation-name: owinner;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
 }
 
 /***********Modes****************************/
@@ -149,8 +200,8 @@ aside.game-modes {
     clear: both;
     padding: 20px 0;
     height: $button-height;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    border-top: 1px solid $line-grey;
+    border-bottom: 1px solid $line-grey;
     margin: 0 0 10px 0;
 }
 
@@ -165,8 +216,16 @@ aside.game-modes ul li {
   height: $button-height;
   text-align: center;
   line-height: $button-height;
-  border: 1px solid #fff;
+  border: 1px solid $line-grey;
   box-sizing: border-box;
+}
+
+aside.game-modes ul li.left{
+  border-right: 0px solid $line-grey;
+}
+
+aside.game-modes ul li.right{
+  border-left: 0px solid $line-grey;
 }
 
 /***********Footer****************************/
