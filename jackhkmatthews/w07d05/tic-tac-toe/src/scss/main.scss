@@ -12,6 +12,7 @@ $line-grey: #9c9c9c;
 $board-width: 390px;
 $button-height: 30px;
 
+$font-size: 16px;
 
 
 /***********animations************************/
@@ -48,6 +49,7 @@ body {
   padding: 0 10%;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: $font-size;
 }
 
 ul {
@@ -178,6 +180,18 @@ li.cell {
 .cell1, .cell4, .cell7 {
     border-left: 1px solid $line-grey;
     border-right: 1px solid $line-grey;
+}
+
+.cell.x-next:hover{
+  color: $neon-green;
+}
+
+.cell.o-next:hover{
+  color: $neon-pink;
+}
+
+.cell.x:hover, .cell.o:hover {
+  color: $text-white;
 }
 
 .cell.x.winner {

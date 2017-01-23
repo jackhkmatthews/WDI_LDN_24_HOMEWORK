@@ -28,18 +28,16 @@
       <header>
         <div class="turn-container clearfix">
           <ul class="clearfix">
-            <li ng-if="game.xIsNext" class="player-x-selector">x</li>
-            <li ng-if="!game.xIsNext">x</li>
+            <li ng-class="{'player-x-selector': game.xIsNext}">x</li>
             <li ng-click="game.reset()" class="reset">Reset</li>
-            <li ng-if="!game.xIsNext" class="player-o-selector"><i class="fa fa-circle-thin" aria-hidden="true"></i></li>
-            <li ng-if="game.xIsNext"><i class="fa fa-circle-thin" aria-hidden="true"></i></li>
+            <li ng-class="{'player-o-selector': !game.xIsNext}"><i class="fa fa-circle-thin" aria-hidden="true"></i></li>
           </ul>
         </div>
       </header>
       <main class="clearfix">
         <div class="board-container clearfix">
           <ul class="board clearfix">
-            <li class="cell cell{{cell.index}} {{cell.player}} {{cell.winner}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)" ng-bind-html="cell.html">
+            <li ng-class="{winner: cell.winner, x: cell.playerX, o: cell.playerO, 'x-next': game.xIsNext, 'o-next': !game.xIsNext}" class="cell cell{{cell.index}}" ng-repeat="cell in game.cells" ng-click="game.move(cell)" ng-bind-html="cell.html">
             </li>
           </ul>
         </div>
