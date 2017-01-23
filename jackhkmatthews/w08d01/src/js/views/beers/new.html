@@ -1,0 +1,16 @@
+<h1>Add a new beer</h1>
+<form ng-submit="beersNew.beersCreate()">
+  <div class="form-group">
+    <label for="beerName">Beer Name</label>
+    <input type="text" class="form-control" placeholder="Lovely Lager" ng-model="beersNew.newBeer.name">
+  </div>
+  <div class="form-group">
+    <label for="beerBio">Bio</label>
+    <textarea class="form-control" rows="3" ng-model="beersNew.newBeer.bio">Makes you really happy, then sad, then sleepy.</textarea>
+  </div>
+  <div class="form-group">
+    <label for="beerImage">Image Link</label>
+    <input type="text" class="form-control" placeholder="www.lovelylargerhighres.jpeg" ng-model="beersNew.newBeer.image">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

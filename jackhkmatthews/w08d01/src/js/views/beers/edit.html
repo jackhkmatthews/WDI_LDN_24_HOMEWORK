@@ -1,0 +1,16 @@
+<h1>Edit</h1>
+<form ng-submit="beersEdit.beersUpdate()">
+  <div class="form-group">
+    <label for="beerName">Beer Name</label>
+    <input type="text" class="form-control" placeholder="{{beersEdit.beer.name}}" ng-model="beersEdit.beer.name">
+  </div>
+  <div class="form-group">
+    <label for="beerBio">Bio</label>
+    <textarea class="form-control" rows="3" ng-model="beersEdit.beer.bio">{{beersEdit.beer.bio}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="beerImage">Image Link</label>
+    <input type="text" class="form-control" placeholder="{{beersEdit.beer.image}}" ng-model="beersEdit.beer.image">
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
