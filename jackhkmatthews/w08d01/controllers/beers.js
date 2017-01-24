@@ -16,8 +16,9 @@ function beersCreate(req, res){
 }
 
 function beersIndex(req, res){
+  var regex = new RegExp(req.params.searchTerm, 'i');
   Beer
-  .find({}, (err, beers) => {
+  .find({name: regex}, (err, beers) => {
     if (err) return res.status(500).json({
       message: 'something went wrong',
       err: err

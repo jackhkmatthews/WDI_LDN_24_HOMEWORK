@@ -13,4 +13,17 @@
       </div>
     </div>
   </div>
+  <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="beer in beersSearch.beers track by $index">
+    <div class="thumbnail">
+      <img src="{{beer.image}}" alt="beer">
+      <div class="caption">
+        <h3>{{beer.name}}</h3>
+        <p>Maker should go here</p>
+        <p>
+          <a ui-sref="beersShow({id: beer._id})" class="btn btn-primary" role="button">Show</a>
+          <a ng-click="beersSearch.beersDelete(beer)" class="btn btn-danger" role="button">Delete</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

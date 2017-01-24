@@ -17,6 +17,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
       templateUrl: '/js/views/beers/index.html',
       controller: 'BeersIndexCtrl as beersIndex'
     })
+    .state('beersSearch', {
+      url: '/beers/search/:searchTerm',
+      templateUrl: '/js/views/beers/index.html',
+      controller: 'BeersSearchCtrl as beersSearch'
+    })
     .state('beersNew', {
       url: '/beers/new',
       templateUrl: '/js/views/beers/new.html',

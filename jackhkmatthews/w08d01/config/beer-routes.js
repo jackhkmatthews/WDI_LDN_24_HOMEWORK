@@ -11,4 +11,7 @@ router.route('/beers/:id')
   .put(beers.update)
   .delete(beers.delete);
 
+router.route('/beers/search/:searchTerm')
+  .get(beers.index);
+
 module.exports = router;
