@@ -1,0 +1,22 @@
+{
+  "name": "tag-anything",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "jackhkmatthews <jackhkmatthews@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jackhkmatthews/WDI_LDN_24_HOMEWORK",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.4.2",
+    "angular-resource": "^1.6.1"
+  }
+}

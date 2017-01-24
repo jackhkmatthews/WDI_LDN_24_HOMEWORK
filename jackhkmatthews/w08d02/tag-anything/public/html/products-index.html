@@ -1,0 +1,12 @@
+<h2>Showing {{pIndexVM.products.length}} products</h2>
+
+<ul>
+  <li data-ng-repeat="product in pIndexVM.products">
+    <a data-ui-sref="show({name: product.name})">
+      {{product.name}}
+    </a>
+  </li>
+</ul>
+
+<input data-ng-model="pIndexVM.newProduct.name" type="text" name="name" placeholder="Name of new product">
+<button data-ng-click="pIndexVM.create()" type="button" name="button">Create Product</button>

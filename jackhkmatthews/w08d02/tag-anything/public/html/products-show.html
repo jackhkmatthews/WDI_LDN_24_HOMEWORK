@@ -1,0 +1,9 @@
+<div data-ng-if="!pShowVM.product.name">
+  <h2>This product does not exist</h2>
+</div>
+<div data-ng-if="pShowVM.product.name">
+  <h2>Showing {{pShowVM.product.name}}</h2>
+  <input data-ng-model="pShowVM.product.name" type="text" name=""><br>
+  <button data-ng-click="pShowVM.update()" type="button" name="button">Update Product</button><br>
+  <button data-ng-click="pShowVM.delete()" type="button" name="button">Delete Product</button>
+</div>
