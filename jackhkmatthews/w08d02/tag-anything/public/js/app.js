@@ -1,4 +1,4 @@
-console.log(angular);
+
 
 
 (function(){
@@ -10,7 +10,17 @@ console.log(angular);
     .config(Router)
     .factory('Product', productFactory)
     .controller('productsIndexController', productsIndexController)
-    .controller('productsShowController', productsShowController);
+    .controller('productsShowController', productsShowController)
+    .provider('MyProvider', MyProvider);
+
+  function MyProvider(){
+
+    console.log('My Provider');
+
+    this.$get = function(){
+      return 'My Value';
+    };
+  }
 
   Router.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 
@@ -40,8 +50,9 @@ console.log(angular);
     return Product;
   }
 
-  productsIndexController.$inject = ['Product'];
-  function productsIndexController(Product){
+  productsIndexController.$inject = ['Product', 'MyProvider'];
+  function productsIndexController(Product, MyProvider){
+    console.log('MyProvider inside IndexController: ', MyProvider);
     const vm = this;
     vm.products = Product.query();
     vm.create = () => {
@@ -53,6 +64,7 @@ console.log(angular);
 
   productsShowController.$inject = ['$stateParams', 'Product', '$state'];
   function productsShowController($stateParams, Product, $state){
+    console.log('MyProvider inside ShowController: ', MyProvider);
     const vm = this;
     vm.product = Product.get({name: $stateParams.name});
 
@@ -64,7 +76,6 @@ console.log(angular);
 
     vm.update = () => {
       Product.update({name: $stateParams.name}, vm.product, (response) => {
-        console.log(response);
         $state.go('show', {name: response.name});
       });
     };

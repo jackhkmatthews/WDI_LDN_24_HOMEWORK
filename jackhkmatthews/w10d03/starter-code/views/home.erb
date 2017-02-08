@@ -1,0 +1,13 @@
+<% if @translation%>
+<h1 class="translation"><%= @translation %></h1>
+<% else %>
+<h1 class="translation">igPay atinLay</h1>
+<% end %>
+<form class="translate" action="/" method="post">
+  <% if @input%>
+    <input class="translate" type="text" name="text" value="<%= @input %>">
+  <% else %>
+    <input class="translate" type="text" name="text" value="Pig Latin">
+  <% end %>
+  <button class="translate">translate</button>
+</form>
