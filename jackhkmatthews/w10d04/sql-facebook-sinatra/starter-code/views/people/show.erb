@@ -1,0 +1,17 @@
+<h2><%= @person['first'] %> <%= @person['last'] %></h2>
+
+<ul>
+  <li>DOB: <%= @person['dob'] %></li>
+  <li>relationship: <%= @person['relationship'] %></li>
+  <li>friends: <%= @person['friends'] %></li>
+  <li>city: <%= @person['city'] %></li>
+  <li>
+    <a href="/people/<%= @person['id'] %>/edit">Edit</a>
+  </li>
+  <li>
+    <form action="/people/<%= @person['id'] %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete</button>
+    </form>
+  </li>
+</ul>

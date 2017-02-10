@@ -1,0 +1,12 @@
+<h2>Edit user <%= @person['fist'] %> <%= @person['last'] %></h2>
+
+<form action="/people/<%= @person['id'] %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" name="first" value="<%= @person['first'] %>">
+  <input type="text" name="last" value="<%= @person['last'] %>">
+  <input type="text" name="city" value="<%= @person['city'] %>">
+  <input type="number" name="friends" value="<%= @person['friends'] %>">
+  <input type="date" name="dob" value="<%= @person['dob'] %>">
+  <input type="text" name="relationship" value="<%= @person['relationship'] %>">
+  <button>Update</button>
+</form>
