@@ -1,0 +1,21 @@
+{
+  "name": "tic-tac-toe",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Jack Matthews <jackhkmatthews@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jackhkmatthews/WDI_LDN_24_HOMEWORK",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-sanitize": "^1.6.4"
+  }
+}

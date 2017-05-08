@@ -9,7 +9,7 @@
   <script src="../js/controllers/TictactoeController.js" charset="utf-8"></script>
   <link rel="stylesheet" href="../css/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i" rel="stylesheet">
-  <link rel="stylesheet" href="../icons/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../font-awesome.css">
   <link rel="stylesheet" href="../css/main.css">
 </head>
 <body ng-controller="TictactoeController as game">
@@ -17,7 +17,7 @@
     <div class="landing-page-container" ng-if="game.landing">
       <div class="player-container clearfix">
         <h1 class="player-x-selector">X</h1>
-        <h1 class="player-o-selector"><i class="fa fa-circle-thin" aria-hidden="true"></i></h1>
+        <h1 class="player-o-selector">o</i></h1>
       </div>
       <h2>Tic Tac Toe</h2>
       <h3 class="play-button" ng-click="game.landing = false"><i class="fa fa-play" aria-hidden="true"></i></h3>
@@ -30,7 +30,7 @@
           <ul class="clearfix">
             <li ng-class="{'player-x-selector': game.xIsNext}">x</li>
             <li ng-click="game.reset()" class="reset">Reset</li>
-            <li ng-class="{'player-o-selector': !game.xIsNext}"><i class="fa fa-circle-thin" aria-hidden="true"></i></li>
+            <li ng-class="{'player-o-selector': !game.xIsNext}">o</i></li>
           </ul>
         </div>
       </header>

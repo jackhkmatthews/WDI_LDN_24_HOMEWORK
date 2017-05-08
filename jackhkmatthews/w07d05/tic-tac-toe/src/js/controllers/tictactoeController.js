@@ -122,7 +122,7 @@ function TictactoeController(){
       cell.playerX = true;
     }
     if(!vm.xIsNext) {
-      cell.html = '<i class="fa fa-circle-thin" aria-hidden="true"></i>';
+      cell.html = 'o';
       cell.playerO = true;
     }
     cell.played = true;
